@@ -53,8 +53,45 @@
         
         @media (max-width: 768px) {
             .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 2rem; }
-            .section { padding: 4rem 0; }
-            h1 { font-size: 2.5rem !important; }
+            .section { padding: 3rem 0; }
+            .container { padding: 0 1.5rem; }
+            h1 { font-size: 2rem !important; }
+            h2 { font-size: 1.5rem !important; }
+            h3 { font-size: 1.1rem !important; }
+            p { font-size: 0.95rem; margin-bottom: 1rem; }
+            .hero { height: auto; min-height: 100vh; padding: 3rem 0; }
+            .hero h1 { font-size: 2rem !important; }
+            .hero p { font-size: 0.95rem; }
+            .en-label { font-size: 0.65rem; }
+            .intro-card { padding: 1.5rem; }
+            .comparison-table { font-size: 0.75rem; }
+            .comparison-table th, .comparison-table td { padding: 0.8rem 0.5rem; }
+            .comparison-table th { width: 30%; }
+            .component-card { padding: 1.5rem; }
+            .concept-card { padding: 2rem 1.5rem; }
+            .story-bg { padding: 4rem 0; }
+            .story-bg h2 { font-size: 1.8rem !important; }
+            .story-bg::after { font-size: 5rem; }
+            .tategaki { writing-mode: horizontal-tb; height: auto !important; border: none !important; padding: 0 !important; text-align: center; }
+            .bar-label { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+            .scroll-indicator { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 1rem; }
+            h1 { font-size: 1.6rem !important; }
+            h2 { font-size: 1.3rem !important; }
+            h3 { font-size: 1rem !important; }
+            p { font-size: 0.9rem; line-height: 1.7; }
+            .hero h1 { font-size: 1.6rem !important; }
+            .section { padding: 2.5rem 0; }
+            .comparison-table { font-size: 0.65rem; }
+            .comparison-table th, .comparison-table td { padding: 0.6rem 0.4rem; }
+            .component-grid { grid-template-columns: 1fr; }
+            .story-bg h2 { font-size: 1.5rem !important; }
+            .story-bg p { font-size: 0.85rem; }
+            footer h2 { font-size: 1.4rem !important; }
+            .btn { padding: 0.8rem 2rem; font-size: 0.9rem; }
         }
 
         /* Animation Classes */
