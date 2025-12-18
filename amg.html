@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ねっか液体酒粕 提案資料 Ver.2</title>
+    <!-- Reveal.js CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/theme/white.min.css" id="theme">
+
+    <style>
+        /* カスタムスタイル */
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+        }
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+            text-transform: none;
+            font-weight: bold;
+            color: #333;
+        }
+        .reveal h1 { font-size: 1.8em; margin-bottom: 0.5em; }
+        .reveal h2 { font-size: 1.4em; color: #8a6d3b; border-bottom: 2px solid #8a6d3b; padding-bottom: 10px; }
+        .reveal h3 { font-size: 1.1em; color: #555; margin-top: 20px; }
+        .reveal p, .reveal li { font-size: 0.75em; line-height: 1.6; text-align: left; }
+        .reveal ul { display: block; margin-left: 1.5em; }
+        
+        /* レイアウト用 */
+        .container { display: flex; gap: 20px; align-items: flex-start; }
+        .col-text { flex: 3; }
+        .col-img { flex: 2; display: flex; flex-direction: column; justify-content: center; }
+        
+        /* 画像プレースホルダー */
+        .img-box {
+            background-color: #f4f4f4;
+            border: 2px dashed #ccc;
+            color: #777;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.6em;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* テーブルスタイル */
+        table.comparison {
+            font-size: 0.55em;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table.comparison th, table.comparison td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        table.comparison th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        table.comparison td.highlight {
+            background-color: #fff8e1;
+            font-weight: bold;
+            color: #8a6d3b;
+            border: 2px solid #8a6d3b;
+        }
+
+        /* グラフバー */
+        .bar-container { width: 100%; margin: 10px 0; font-size: 0.6em; }
+        .bar-row { display: flex; align-items: center; margin-bottom: 10px; }
+        .bar-label { width: 30%; text-align: right; padding-right: 10px; }
+        .bar-area { width: 70%; background: #eee; height: 20px; border-radius: 4px; overflow: hidden; position: relative; }
+        .bar-fill { height: 100%; display: flex; align-items: center; padding-left: 5px; color: white; font-size: 0.8em; }
+        .fill-low { background-color: #999; width: 5%; } /* ガラクトミセス想定 */
+        .fill-high { background-color: #c0392b; width: 80%; font-weight: bold;} /* ねっか想定 */
+        
+        /* 強調 */
+        .highlight-text { color: #c0392b; font-weight: bold; }
+        .sub-title { font-size: 0.6em; color: #666; margin-bottom: 30px; }
+        .detail-box { background: #fff8e1; padding: 10px; border-radius: 5px; border: 1px solid #e0c080; font-size: 0.9em; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="reveal">
+    <div class="slides">
+
+        <!-- Slide 0: Title -->
+        <section>
+            <h1>次世代発酵原料<br>「ねっか液体酒粕」の<br>科学的優位性と市場ポジショニング</h1>
+            <p class="sub-title">〜世界的発酵トレンドと伝統酒造のアップサイクルが融合する高濃度バイオアクティブ原料〜</p>
+            <div style="margin-top: 50px; font-size: 0.6em; color: #888;">
+                Proposed by: AMG<br>
+                For: Cosmetic Manufacturers & Brands
+            </div>
+        </section>
+
+        <!-- Section 1: Market Background -->
+        <section>
+            <section>
+                <h2>1. 発酵コスメ市場のパラダイムシフト</h2>
+                <h3>「イメージ」から「バイオサイエンス」へ。</h3>
+                <div class="container">
+                    <div class="col-text">
+                        <ul>
+                            <li><strong>市場の変遷：</strong>
+                                <ul>
+                                    <li>かつて：「肌に優しい」「自然派」という漠然としたイメージ訴求。</li>
+                                    <li><span class="highlight-text">現在：</span>多機能なバイオアクティブ（ペプチド・アミノ酸・有機酸等）を供給する「プラットフォーム原料」として科学的に再評価。</li>
+                                </ul>
+                            </li>
+                            <li><strong>最新の学術トレンド（2023年以降）：</strong>
+                                <ul>
+                                    <li>プロバイオティクス（生菌）に加え、<strong>ポストバイオティクス（代謝物・菌体成分）</strong>の有用性が確立。</li>
+                                    <li>保湿・抗酸化に加え、「皮膚マイクロバイオーム（常在菌叢）バランス改善」が主要テーマに。</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-img">
+                        <div class="img-box">
+                            【画像イメージ】<br>左：木桶等の伝統的風景（過去）<br>⬇ 矢印 ⬇<br>右：分子構造、細胞作用図（現代のサイエンス）
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>2. 発酵原料の2大潮流と「ねっか」の独自ポジション</h2>
+                <h3>Global Standard vs Japan Traditional + NEW</h3>
+                <div class="container">
+                    <div class="col-text">
+                        <ol>
+                            <li><strong>設計された培養液（Global Standard）</strong>
+                                <ul>
+                                    <li>ガラクトミセス、ビフィズス菌等。単一菌種×糖質培地。</li>
+                                    <li>安定性は高いが、濃度は意図的に調整される傾向。</li>
+                                </ul>
+                            </li>
+                            <li><strong>伝統的発酵 × 近代バイオ（Japan Traditional）</strong>
+                                <ul>
+                                    <li>日本酒、酒粕、米ぬか発酵液。</li>
+                                    <li>コウジ酸・フェルラ酸等の複合成分。通常は「抽出」が必要。</li>
+                                </ul>
+                            </li>
+                            <li class="highlight-text"><strong>【New Position】ねっか液体酒粕</strong>
+                                <ul>
+                                    <li>「伝統酒造 × サステナブル × 高濃度バイオアクティブ」</li>
+                                    <li>福島県只見町の米焼酎蒸留で偶発的に得られる「発酵ろ液」。</li>
+                                    <li>人為的抽出ではなく、蒸留（熱力学）が生んだ「原液」。</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="col-img">
+                        <div class="img-box">
+                            【図解イメージ】<br>3つの円が重なるベン図<br>1. Science (高機能)<br>2. Tradition (伝統)<br>3. Sustainability (環境)<br>★中心に「ねっか液体酒粕」
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Section 2: Competitor Analysis -->
+        <section>
+            <section>
+                <h2>3. 競合分析① ガラクトミセス培養液</h2>
+                <h3>市場の覇者の強みと、構造的な限界</h3>
+                <div class="container">
+                    <div class="col-text">
+                        <ul>
+                            <li><strong>概要：</strong>
+                                清酒酵母（ガラクトミセス属）を牛乳や糖質培地で培養したろ液。
+                            </li>
+                            <li><strong>科学的実績：</strong>
+                                <ul>
+                                    <li>フィラグリン・カスパーゼ14発現増強（NMF産生）。</li>
+                                    <li>抗シワ、透明感向上に関する豊富なデータ。</li>
+                                </ul>
+                            </li>
+                            <li><strong>構造的な課題（差別化ポイント）：</strong>
+                                <ul>
+                                    <li>人工的な培地環境（米や麹の酵素系を含まない）。</li>
+                                    <li><strong>低濃度設計：</strong>固形分（Brix）は概ね <span class="highlight-text">0.3〜0.8%</span> 程度。</li>
+                                    <li>「生の発酵の濃さ」より、大量生産と安定化のために希釈されている。</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-img">
+                        <div class="img-box">
+                            【画像イメージ】<br>試験管に入った透明な液体。<br>成分グラフ：水分が多く有効成分が微量であることを示唆。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>4. 競合分析② ビフィズス菌・乳酸菌発酵液</h2>
+                <h3>「美肌菌」ブームを牽引するポストバイオティクス</h3>
+                <div class="container">
+                    <div class="col-text">
+                        <ul>
+                            <li><strong>ビフィズス菌培養溶解質（Bifida Ferment Lysate）：</strong>
+                                <ul>
+                                    <li>大手デパコス美容液の主役成分。</li>
+                                    <li>機能：DNA損傷修復補助、抗炎症（IL-6/IL-8抑制）。</li>
+                                </ul>
+                            </li>
+                            <li><strong>ラクトバチルス／ラクトコッカス発酵液：</strong>
+                                <ul>
+                                    <li>機能：スキンマイクロバイオーム調整、pHバランス、バリア強化。</li>
+                                </ul>
+                            </li>
+                            <li><strong>市場評価：</strong>
+                                <br>機能性は高いが、「菌由来」の側面が強く、植物的なストーリーや「和」の要素は薄い。
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-img">
+                        <div class="img-box">
+                            【画像イメージ】<br>皮膚表面の菌フローラ（お花畑のようなイメージ）。<br>バリア機能が修復される断面図。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>5. 競合分析③ 一般的な酒粕・米発酵原料</h2>
+                <h3>「美容成分の宝庫」そのポテンシャルと課題</h3>
+                <div class="container">
+                    <div class="col-text">
+                        <ul>
+                            <li><strong>成分特性（酒粕は美容の宝庫）：</strong>
+                                <ul>
+                                    <li><strong>ビタミンB群・有機酸：</strong>代謝促進、肌ターンオーバー補助。</li>
+                                    <li><strong>コウジ酸・アルブチン等：</strong>チロシナーゼ活性阻害（美白）。</li>
+                                    <li><strong>グルコシルセラミド：</strong>角質バリア強化、保湿機能向上。</li>
+                                </ul>
+                            </li>
+                            <li><strong>一般的な「酒粕エキス」の課題：</strong>
+                                <ul>
+                                    <li>プロセス：板粕（固形）を乾燥 → アルコールやBGで再抽出。</li>
+                                    <li><strong>デメリット：</strong>
+                                        <ul>
+                                            <li>乾燥・加熱工程での酵素・ビタミンの失活。</li>
+                                            <li>抽出溶媒による希釈（本来の力が薄まる）。</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-img">
+                        <div class="img-box">
+                            【図解：酒粕成分の宝庫】<br>アミノ酸・ペプチド・セラミド・コウジ酸が詰まっているが、抽出工程でロスが生じるイメージ。
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Section 3: Nekka's Advantages -->
+        <section>
+            <section>
+                <h2>6. 独自の製造プロセス「共発酵 × 低温蒸留」</h2>
+                <h3>狙って作れない。「蒸留」が生んだ奇跡の副産液</h3>
+                <div class="container">
+                    <div class="col-text">
+                        <ul>
+                            <li><strong>希少なプロセス条件：</strong>
+                                <ul>
+                                    <li>福島県只見町「ねっか」特注蒸留器による減圧蒸留。</li>
+                                    <li><strong>蒸留温度：約30℃前後</strong>（体温より低い）。</li>
+                                </ul>
+                            </li>
+                            <li><strong>共発酵（Co-fermentation）：</strong>
+                                単一菌ではなく、<strong>「清酒酵母」＋「麹菌」</strong>が同時活動する複雑系。
+                            </li>
+                            <li><strong>結果として得られる液体：</strong>
+                                <ul>
+                                    <li>高温殺菌前の<span class="highlight-text">「発酵直後」のフレッシュさ</span>。</li>
+                                    <li>熱に弱い酵素やペプチドが変性せず残存。</li>
+                                    <li>揮発性の「吟醸香」も液体中にトラップされる。</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-img">
+                        <div class="img-box">
+                            【画像イメージ】<br>ねっかの蒸留器。<br>低温で滴り落ちる「液体酒粕」の雫のアップ。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>7. 【核心】圧倒的な成分濃度比較</h2>
+                <h3>ガラクトミセスの10〜20倍。「エキス」ではなく「原液」</h3>
+                
+                <div style="margin-top: 20px;">
+                    <p><strong>固形分（Brix）の比較イメージ</strong></p>
+                    <div class="bar-container">
+                        <div class="bar-row">
+                            <div class="bar-label">一般ガラクトミセス等<br>(0.3~0.8%)</div>
+                            <div class="bar-area">
+                                <div class="bar-fill fill-low"></div>
+                            </div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label" style="font-weight:bold; color:#c0392b;">ねっか液体酒粕<br>(4.0~7.0%)</div>
+                            <div class="bar-area">
+                                <div class="bar-fill fill-high">約10〜20倍の高濃度</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p><strong>アミノ酸総量の比較</strong></p>
+                    <div class="bar-container">
+                        <div class="bar-row">
+                            <div class="bar-label">一般培養液<br>(0.05~0.2%)</div>
+                            <div class="bar-area">
+                                <div class="bar-fill fill-low" style="width: 10%;"></div>
+                            </div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label" style="font-weight:bold; color:#c0392b;">ねっか液体酒粕<br>(1.0~2.5%)</div>
+                            <div class="bar-area">
+                                <div class="bar-fill fill-high" style="width: 60%;">約5〜10倍</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="margin-top:20px; font-weight:bold;">結論：水で薄めたような原料とは根本的に異なる「高密度バイオアクティブ溶液」。</p>
+            </section>
+
+            <section>
+                <h2>8. 成分詳細と皮膚への作用メカニズム</h2>
+                <h3>「酒粕由来成分」を多層的に供給するメカニズム</h3>
+                <div class="container">
+                    <div class="col-text" style="font-size: 0.9em;">
+                        <ol>
+                            <li><strong>アミノ酸・ペプチド群（NMF様成分）</strong>
+                                <br><small>保湿、肌水分保持、バリア機能補助。</small>
+                            </li>
+                            <li><strong>コウジ酸・フェルラ酸・チロシナーゼ阻害因子</strong>
+                                <br><small>美白作用（メラニン生成抑制）、明るい肌トーンへの誘導。</small>
+                            </li>
+                            <li><strong>グルコシルセラミド・ビタミンB群</strong>
+                                <br><small>角質バリア強化、肌代謝（ターンオーバー）の促進サポート。</small>
+                            </li>
+                            <li><strong>α-EG（α-エチル-D-グルコシド）</strong>
+                                <br><small>真皮線維芽細胞へアプローチし、コラーゲン密度を向上。</small>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="col-img">
+                        <div class="detail-box">
+                            <strong>【多機能性のポイント】</strong><br>
+                            単一成分添加とは異なり、<br>
+                            「美白・保湿・バリア・代謝」<br>
+                            の4要素を、発酵由来の複合成分として同時にケア可能。
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Section 4: Comparison & Story -->
+        <section>
+            <section>
+                <h2>9. 構造比較マトリクス</h2>
+                <table class="comparison">
+                    <thead>
+                        <tr>
+                            <th>比較項目</th>
+                            <th>ガラクトミセス培養液</th>
+                            <th>ラクトバチルス系</th>
+                            <th>一般的な酒粕エキス</th>
+                            <th style="background:#fff8e1; color:#c0392b;">ねっか液体酒粕</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>起源</td>
+                            <td>単一酵母＋糖質培地</td>
+                            <td>乳酸菌/ビフィズス菌</td>
+                            <td>乾燥酒粕抽出</td>
+                            <td class="highlight">清酒酵母＋麹菌＋米</td>
+                        </tr>
+                        <tr>
+                            <td>プロセス</td>
+                            <td>人工培養・ろ過</td>
+                            <td>培養・溶菌</td>
+                            <td>乾燥・熱抽出</td>
+                            <td class="highlight">低温蒸留・生ろ液</td>
+                        </tr>
+                        <tr>
+                            <td>濃度(Brix)</td>
+                            <td>低 (0.3~0.8%)</td>
+                            <td>中</td>
+                            <td>中</td>
+                            <td class="highlight">極高 (4~7%)</td>
+                        </tr>
+                        <tr>
+                            <td>成分多様性</td>
+                            <td>単純</td>
+                            <td>特定代謝物</td>
+                            <td>複合的(セラミド等含む)</td>
+                            <td class="highlight">超複合・生きた成分</td>
+                        </tr>
+                        <tr>
+                            <td>香り</td>
+                            <td>無臭〜特異臭</td>
+                            <td>原料臭</td>
+                            <td>酒粕臭</td>
+                            <td class="highlight">芳醇な吟醸香</td>
+                        </tr>
+                        <tr>
+                            <td>KW</td>
+                            <td>ラボ・サイエンス</td>
+                            <td>菌活・フローラ</td>
+                            <td>伝統・和</td>
+                            <td class="highlight">アップサイクル・高濃度</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2>10. サステナビリティとアップサイクル</h2>
+                <h3>廃棄物を「宝」へ。エシカルな現代消費者に響く物語</h3>
+                <div class="container">
+                    <div class="col-text">
+                        <ul>
+                            <li><strong>課題（Before）：</strong>
+                                焼酎製造時に排出される大量の「蒸留粕」は、処理コストのかかる産業廃棄物だった。
+                            </li>
+                            <li><strong>解決（After）：</strong>
+                                ねっかの低温蒸留技術により、粕は焦げ付かず、栄養豊富な液状として回収可能に。
+                                <br><span class="highlight-text">「捨てるものがない」完全循環型プロセス</span>を実現。
+                            </li>
+                            <li><strong>価値：</strong>
+                                クリーンビューティー、SDGs、ゼロ・ウェイストに関心の高い層への強力なフック。
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-img">
+                        <div class="img-box">
+                            【画像イメージ】<br>循環図：米作り → 酒造り → 蒸留 → 化粧品原料 → 肌への還元
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>11. 地域性（テロワール）とクラフトマンシップ</h2>
+                <h3>ユネスコエコパーク「只見」の雪と水が育んだ原料</h3>
+                <div class="container">
+                    <div class="col-text">
+                        <ul>
+                            <li><strong>ロケーション：</strong>
+                                福島県只見町。日本有数の豪雪地帯、ユネスコエコパーク認定地域。
+                            </li>
+                            <li><strong>トレーサビリティ：</strong>
+                                <ul>
+                                    <li>顔の見える契約農家の酒米を使用。</li>
+                                    <li>世界一（IWSC等）を受賞した蒸留所による品質管理。</li>
+                                </ul>
+                            </li>
+                            <li><strong>情緒的価値：</strong>
+                                無機質な化学原料ではなく、<strong>「土地の記憶」と「作り手の情熱」</strong>を宿した原料。ラグジュアリー層が求める「Narrative」を持つ。
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-img">
+                        <div class="img-box">
+                            【画像イメージ】<br>只見町の雪景色。<br>酒蔵での蒸留作業風景、職人の手元。
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Section 5: Product Proposal -->
+        <section>
+            <section>
+                <h2>12. INCI登録と成分表示の方向性</h2>
+                <h3>新規性と安全性を両立する表示戦略</h3>
+                <div style="text-align: left; margin-top: 30px;">
+                    <ul>
+                        <li style="margin-bottom: 20px;"><strong>成分の実態：</strong><br>
+                            「麹菌＋清酒酵母による発酵」×「低温蒸留ろ液」。<br>
+                            既存の <i>Galactomyces Ferment Filtrate</i> や <i>Sake Lees Extract</i> とは一線を画す独自性。
+                        </li>
+                        <li style="margin-bottom: 20px;"><strong>推奨INCI名／表示名称案（方向性）：</strong><br>
+                            <span class="highlight-text">Shochu Distillate Ferment Filtrate（焼酎蒸留発酵ろ液）</span><br>
+                            <span class="highlight-text">Sake Lees Ferment Filtrate（酒粕発酵ろ液）</span><br>
+                            <small>※分析データに基づき、既存定義の枠内か、新規申請かを検討。</small>
+                        </li>
+                        <li><strong>マーケティング表示：</strong><br>
+                            「生酒粕エキス」「コメ発酵蒸留液」「高濃度発酵ドロップ」など。
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>13. 製品コンセプト案①「原液美容」</h2>
+                <h3>水を使わない。「発酵液」を基剤にしたプレミアム美容液</h3>
+                <div class="container">
+                    <div class="col-text">
+                        <ul>
+                            <li><strong>コンセプト：</strong>
+                                <strong>「成分の〇〇％がねっか液体酒粕」</strong><br>
+                                水の代わりに発酵液を使用する、最高峰の贅沢処方。
+                            </li>
+                            <li><strong>ターゲット：</strong>
+                                SK-II等の発酵コスメユーザー。本物志向のエイジングケア層。
+                            </li>
+                            <li><strong>訴求点：</strong>
+                                <ul>
+                                    <li>「ガラクトミセスの10倍の濃さ」</li>
+                                    <li>「セラミド・アミノ酸・コウジ酸をダイレクトに」</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-img">
+                        <div class="img-box">
+                            【画像イメージ】<br>高級感のあるガラススポイト瓶。<br>琥珀色の液体。<br>コピー：「その一滴に、発酵のすべて。」
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>14. 製品コンセプト案②「生マスク・トナー」</h2>
+                <h3>蔵出しのフレッシュさを肌へ。「生発酵」シリーズ</h3>
+                <div class="container">
+                    <div class="col-text">
+                        <ul>
+                            <li><strong>コンセプト：</strong>
+                                加熱殺菌を最低限に抑え、酵素や香りを生かした製品設計。
+                            </li>
+                            <li><strong>アイテム：</strong>
+                                <ul>
+                                    <li><strong>ローションマスク：</strong>肌のキメを整え、透明感を即効チャージ。</li>
+                                    <li><strong>トナー（化粧水）：</strong>バシャバシャ使える高機能化粧水。</li>
+                                </ul>
+                            </li>
+                            <li><strong>訴求点：</strong>
+                                「肌が飲む、発酵サプリメント」<br>
+                                自然な吟醸香によるアロマコロジー効果。
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-img">
+                        <div class="img-box">
+                            【画像イメージ】<br>みずみずしいフェイスマスク。<br>清潔感のある白いボトルパッケージ。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>15. 製品コンセプト案③「ジェンダーレス」</h2>
+                <h3>鎮静と保湿。男性肌にも響く「クラフト」スキンケア</h3>
+                <div class="container">
+                    <div class="col-text">
+                        <ul>
+                            <li><strong>背景：</strong>
+                                焼酎由来という「硬派」なストーリーは男性層にも受け入れやすい。
+                            </li>
+                            <li><strong>機能性：</strong>
+                                抗炎症作用（シェービング後の鎮静）。<br>
+                                アミノ酸によるさっぱりとした保湿。
+                            </li>
+                            <li><strong>香り：</strong>
+                                フローラル等の化粧品臭ではなく、自然な「酒・米・麹」の香りはジェンダーレスに好まれる。
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-img">
+                        <div class="img-box">
+                            【画像イメージ】<br>グレーや黒を基調としたミニマルなデザイン。<br>洗面所に置かれたスタイリッシュなボトル。
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Section 6: Conclusion -->
+        <section>
+            <h2>16. まとめ・提言</h2>
+            <h3>「ねっか液体酒粕」が市場にもたらす3つの革新</h3>
+            
+            <div style="background: #f9f9f9; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+                <ol>
+                    <li style="margin-bottom: 15px;">
+                        <strong>High Potency（圧倒的な体感品質）</strong><br>
+                        ガラクトミセス比10〜20倍の成分濃度により、確かな効果実感を提供。
+                    </li>
+                    <li style="margin-bottom: 15px;">
+                        <strong>Unique Origin（唯一無二の物語）</strong><br>
+                        「低温蒸留 × 共発酵」という、他社が模倣できない製造背景。
+                    </li>
+                    <li>
+                        <strong>Ethical Standard（未来への責任）</strong><br>
+                        地域資源のアップサイクルにより、SDGs時代のブランド要件を満たす。
+                    </li>
+                </ol>
+            </div>
+
+            <p style="font-size: 0.9em; text-align: center; color: #8a6d3b; font-weight: bold;">
+                世界の発酵トレンドに応えつつ、<br>
+                日本の美意識と技術を体現する「ねっか液体酒粕」。<br>
+                貴社のブランドストーリーを次なるステージへ引き上げる、主役級の原料です。
+            </p>
+        </section>
+
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.js"></script>
+<script>
+    // Reveal.jsの初期化
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        hash: true,
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        
+        // 日本語フォントなどの表示調整
+        width: 960,
+        height: 700,
+        margin: 0.04,
+        minScale: 0.2,
+        maxScale: 2.0
+    });
+</script>
+
+</body>
+</html>
