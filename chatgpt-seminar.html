@@ -85,36 +85,31 @@
       overflow: hidden;
     }
 
-    /* ページフレーム */
+    /* ページフレーム（二重枠線）- 日本バイオスタイル */
     .page::before {
-      content: '';
-      position: absolute;
-      top: 6mm;
-      left: 6mm;
-      right: 6mm;
-      bottom: 6mm;
-      border: 0.5mm solid var(--gold);
-      box-shadow:
-        0 0 0 0.3mm rgba(212,175,55,0.3),
-        inset 0 0 8mm rgba(212,175,55,0.08),
-        0 2mm 8mm rgba(212,175,55,0.15);
-      pointer-events: none;
-    }
-
-    .page::after {
       content: '';
       position: absolute;
       top: 8mm;
       left: 8mm;
       right: 8mm;
       bottom: 8mm;
-      border: 0.2mm solid var(--primary-light);
-      opacity: 0.5;
-      box-shadow: inset 0 0 6mm rgba(76,175,80,0.05);
+      border: 0.4mm solid var(--gold);
       pointer-events: none;
     }
 
-    /* コーナー装飾 */
+    .page::after {
+      content: '';
+      position: absolute;
+      top: 10mm;
+      left: 10mm;
+      right: 10mm;
+      bottom: 10mm;
+      border: 0.2mm solid var(--primary-light);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    /* コーナー装飾 - 日本バイオスタイル */
     .corner-tl, .corner-tr, .corner-bl, .corner-br {
       position: absolute;
       width: 12mm;
@@ -122,35 +117,31 @@
     }
 
     .corner-tl {
-      top: 6mm;
-      left: 6mm;
+      top: 8mm;
+      left: 8mm;
       border-top: 1.5mm solid var(--gold);
       border-left: 1.5mm solid var(--gold);
-      box-shadow: -1mm -1mm 3mm rgba(212,175,55,0.3);
     }
 
     .corner-tr {
-      top: 6mm;
-      right: 6mm;
+      top: 8mm;
+      right: 8mm;
       border-top: 1.5mm solid var(--gold);
       border-right: 1.5mm solid var(--gold);
-      box-shadow: 1mm -1mm 3mm rgba(212,175,55,0.3);
     }
 
     .corner-bl {
-      bottom: 6mm;
-      left: 6mm;
+      bottom: 8mm;
+      left: 8mm;
       border-bottom: 1.5mm solid var(--gold);
       border-left: 1.5mm solid var(--gold);
-      box-shadow: -1mm 1mm 3mm rgba(212,175,55,0.3);
     }
 
     .corner-br {
-      bottom: 6mm;
-      right: 6mm;
+      bottom: 8mm;
+      right: 8mm;
       border-bottom: 1.5mm solid var(--gold);
       border-right: 1.5mm solid var(--gold);
-      box-shadow: 1mm 1mm 3mm rgba(212,175,55,0.3);
     }
 
     /* 表面スタイル */
@@ -556,17 +547,17 @@ function savePDF() {
   <!-- メイン画像 + ChatGPTロゴ + 吹き出し -->
   <div style="position: relative; text-align: center; margin-bottom: 2mm;">
     <!-- ChatGPTロゴ -->
-    <div style="position: absolute; left: 28mm; top: -1mm; background: white; border-radius: 50%; padding: 1.5mm; box-shadow: 0 1mm 3mm rgba(0,0,0,0.15); z-index: 10;">
+    <div style="position: absolute; left: 28mm; top: -1mm; background: white; border-radius: 50%; padding: 1.5mm; border: 0.3mm solid var(--gray-border); z-index: 10;">
       <svg width="10mm" height="10mm" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M37.5324 16.8707C37.9808 15.5241 38.1363 14.0974 37.9886 12.6859C37.8409 11.2744 37.3934 9.91076 36.676 8.68622C35.6126 6.83404 33.9882 5.3676 32.0373 4.4985C30.0864 3.62941 27.9098 3.40259 25.8215 3.85078C24.8796 2.7893 23.7219 1.94125 22.4257 1.36341C21.1295 0.785575 19.7249 0.491269 18.3058 0.500528C16.1708 0.495055 14.0893 1.16498 12.3614 2.42237C10.6335 3.67976 9.34853 5.46013 8.68677 7.50806C7.29385 7.88697 5.9958 8.57508 4.88576 9.52229C3.77573 10.4695 2.87846 11.654 2.25775 12.9963C1.28499 15.0033 0.955519 17.2584 1.31393 19.4558C1.67234 21.6532 2.70183 23.6877 4.26472 25.27C3.81636 26.6166 3.66082 28.0433 3.80852 29.4548C3.95623 30.8664 4.40369 32.2299 5.12102 33.4545C6.18447 35.3066 7.80886 36.7731 9.75975 37.6422C11.7106 38.5113 13.8873 38.7381 15.9755 38.2899C16.9173 39.3514 18.075 40.1994 19.3712 40.7773C20.6674 41.3551 22.0721 41.6494 23.4912 41.6402C25.6261 41.6456 27.7076 40.9757 29.4355 39.7183C31.1634 38.4609 32.4484 36.6806 33.1102 34.6326C34.5031 34.2537 35.8012 33.5656 36.9112 32.6184C38.0213 31.6712 38.9185 30.4867 39.5392 29.1444C40.512 27.1374 40.8414 24.8823 40.4830 22.6849C40.1246 20.4875 39.0951 18.453 37.5324 16.8707ZM23.4912 38.3308C21.7497 38.3363 20.0521 37.8036 18.6375 36.8068L18.7612 36.7364L27.0361 31.975C27.271 31.8402 27.4643 31.6432 27.5958 31.4056C27.7273 31.168 27.7922 30.899 27.7834 30.6269V19.1572L31.2152 21.1382C31.2421 21.152 31.2648 21.1727 31.2814 21.1983C31.2979 21.2239 31.3077 21.2534 31.3098 21.284V30.7C31.3046 32.7245 30.5042 34.6643 29.0758 36.0972C27.6474 37.5301 25.7104 38.3301 23.6873 38.3301L23.4912 38.3308ZM6.83846 31.3135C5.95861 29.8509 5.52953 28.1613 5.60618 26.4575L5.72984 26.528L14.0048 31.2894C14.2377 31.4239 14.5018 31.4948 14.7708 31.4948C15.0397 31.4948 15.3038 31.4239 15.5368 31.2894L25.6199 25.4756V29.4376C25.6186 29.4687 25.6097 29.4989 25.594 29.5254C25.5783 29.552 25.5562 29.5741 25.5299 29.5897L17.1402 34.4126C15.3734 35.4241 13.3069 35.7772 11.2984 35.4076C9.28987 35.038 7.46889 33.9694 6.17632 32.3921L6.83846 31.3135ZM4.45861 13.7103C5.33553 12.243 6.66499 11.0824 8.24632 10.3964V20.0949C8.23713 20.366 8.30039 20.6347 8.42997 20.8728C8.55955 21.1109 8.75063 21.3094 8.98382 21.4471L19.0662 27.261L15.6344 29.2421C15.6067 29.2582 15.5753 29.2673 15.543 29.2686C15.5107 29.2698 15.4787 29.2632 15.4498 29.2494L7.06018 24.4258C5.29816 23.4089 4.01022 21.7481 3.44181 19.7992C2.87339 17.8502 3.06724 15.7654 4.02386 13.9587L4.45861 13.7103ZM33.4265 19.6924L23.3434 13.8786L26.7752 11.8976C26.8029 11.8815 26.8343 11.8724 26.8666 11.8711C26.8989 11.8699 26.9309 11.8765 26.9598 11.8903L35.3494 16.7139C36.7054 17.4871 37.8066 18.6457 38.5153 20.0467C39.2239 21.4477 39.5084 23.0286 39.333 24.5933C39.1576 26.1579 38.5305 27.6364 37.5295 28.8481C36.5285 30.0597 35.1978 30.951 33.6973 31.4108V21.7124C33.7065 21.4412 33.6433 21.1726 33.5137 20.9345C33.3841 20.6964 33.193 20.4979 32.9598 20.3602L33.4265 19.6924ZM36.8039 14.6828L36.6803 14.6124L28.4053 9.85094C28.1724 9.71646 27.9083 9.64552 27.6394 9.64552C27.3704 9.64552 27.1063 9.71646 26.8734 9.85094L16.7903 15.6647V11.7027C16.7916 11.6716 16.8005 11.6414 16.8162 11.6149C16.8319 11.5883 16.854 11.5662 16.8803 11.5506L25.2699 6.72768C26.6259 5.95435 28.1698 5.55683 29.7383 5.57877C31.3068 5.60071 32.8382 6.04126 34.1706 6.85241C35.5029 7.66356 36.5863 8.81561 37.3161 10.1879C38.046 11.5602 38.3953 13.1019 38.3301 14.6545L36.8039 14.6828ZM14.8179 21.9831L11.3861 20.0021C11.3592 19.9883 11.3365 19.9677 11.3199 19.9421C11.3034 19.9165 11.2936 19.887 11.2915 19.8564V10.4404C11.2967 8.87242 11.7496 7.33961 12.5964 6.01902C13.4432 4.69843 14.6491 3.64364 16.0729 2.97668C17.4967 2.30972 19.0803 2.05779 20.6393 2.25095C22.1982 2.44412 23.6684 3.07432 24.876 4.0698L24.7523 4.14023L16.4774 8.90164C16.2424 9.03639 16.0491 9.23337 15.9176 9.47099C15.7861 9.7086 15.7212 9.97759 15.7301 10.2497L14.8179 21.9831ZM16.7896 18.0071L20.7057 15.75L24.6218 18.0064V22.5193L20.7057 24.7757L16.7896 22.5193V18.0071Z" fill="#10a37f"/>
       </svg>
     </div>
     <!-- 吹き出し -->
-    <div style="position: absolute; right: 5mm; top: 0mm; background: var(--primary); color: white; padding: 3mm 4mm; border-radius: 3mm; max-width: 42mm; box-shadow: 0 1mm 3mm rgba(0,0,0,0.2);">
+    <div style="position: absolute; right: 5mm; top: 0mm; background: var(--primary); color: white; padding: 3mm 4mm; border-radius: 3mm; max-width: 42mm; border: 0.3mm solid var(--primary-dark);">
       <p style="font-size: 9pt; margin: 0; line-height: 1.4; font-weight: 500;">話すだけで<br>モヤモヤが<br>スッキリ整理される！</p>
       <div style="position: absolute; left: -2mm; top: 8mm; width: 0; height: 0; border-top: 2mm solid transparent; border-bottom: 2mm solid transparent; border-right: 3mm solid var(--primary);"></div>
     </div>
-    <img src="relax.webp" alt="リラックスイメージ" style="width: 55mm; height: 30mm; object-fit: cover; border-radius: 2mm; box-shadow: 0 1mm 5mm rgba(0,0,0,0.1);">
+    <img src="relax.webp" alt="リラックスイメージ" style="width: 55mm; height: 30mm; object-fit: cover; border-radius: 2mm; border: 0.3mm solid var(--gray-border);">
   </div>
 
   <div class="main-title" style="margin-bottom: 2mm;">
@@ -712,23 +703,23 @@ function savePDF() {
   <div class="result-section" style="margin-bottom: 4mm;">
     <h2 style="font-size: 12pt; margin-bottom: 4mm; padding-left: 3mm; border-left: 2mm solid var(--gold);">この講座で得られること</h2>
     <div class="result-grid" style="grid-template-columns: repeat(4, 1fr); gap: 3mm;">
-      <div class="result-item" style="padding: 4mm; box-shadow: 0 1mm 3mm rgba(0,0,0,0.1);">
+      <div class="result-item" style="padding: 4mm; border: 0.3mm solid var(--gold);">
         <p style="font-size: 10pt; font-weight: 500;">考えすぎを<br>手放す感覚</p>
       </div>
-      <div class="result-item" style="padding: 4mm; box-shadow: 0 1mm 3mm rgba(0,0,0,0.1);">
+      <div class="result-item" style="padding: 4mm; border: 0.3mm solid var(--gold);">
         <p style="font-size: 10pt; font-weight: 500;">気持ちを<br>溜め込まない方法</p>
       </div>
-      <div class="result-item" style="padding: 4mm; box-shadow: 0 1mm 3mm rgba(0,0,0,0.1);">
+      <div class="result-item" style="padding: 4mm; border: 0.3mm solid var(--gold);">
         <p style="font-size: 10pt; font-weight: 500;">「整ってから動く」<br>新しい習慣</p>
       </div>
-      <div class="result-item" style="padding: 4mm; box-shadow: 0 1mm 3mm rgba(0,0,0,0.1);">
+      <div class="result-item" style="padding: 4mm; border: 0.3mm solid var(--gold);">
         <p style="font-size: 10pt; font-weight: 500;">スマホ1台で<br>できるセルフケア</p>
       </div>
     </div>
   </div>
 
   <!-- こんな方におすすめ -->
-  <div style="background: var(--cream); border: 0.3mm solid var(--primary-light); border-radius: 2mm; padding: 4mm; margin-bottom: 4mm; box-shadow: 0 1mm 4mm rgba(0,0,0,0.08);">
+  <div style="background: var(--cream); border: 0.3mm solid var(--primary-light); border-radius: 2mm; padding: 4mm; margin-bottom: 4mm;">
     <p style="font-size: 11pt; font-weight: bold; color: var(--primary); margin: 0 0 3mm 0; text-align: center;">こんな方におすすめ</p>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2mm;">
       <p style="font-size: 9pt; color: var(--gray-text); margin: 0; padding-left: 3mm; border-left: 1mm solid var(--gold);">考えすぎて疲れてしまう方</p>
@@ -739,7 +730,7 @@ function savePDF() {
   </div>
 
   <!-- 参加特典 -->
-  <div style="background: linear-gradient(135deg, var(--gold-pale), #FFF8E8); border: 0.5mm solid var(--gold); border-radius: 3mm; padding: 4mm; margin-bottom: 4mm; box-shadow: 0 2mm 6mm rgba(212,175,55,0.2);">
+  <div style="background: var(--gold-pale); border: 0.5mm solid var(--gold); border-radius: 3mm; padding: 4mm; margin-bottom: 4mm;">
     <p style="font-size: 11pt; font-weight: bold; color: var(--gold-dark); margin: 0 0 3mm 0; text-align: center;">🎁 参加特典</p>
     <div style="display: flex; align-items: center; justify-content: center; gap: 5mm;">
       <div style="text-align: center;">
@@ -754,7 +745,7 @@ function savePDF() {
   </div>
 
   <!-- フッター -->
-  <div class="footer-message" style="padding: 4mm; box-shadow: 0 -2mm 8mm rgba(27,94,32,0.15);">
+  <div class="footer-message" style="padding: 4mm;">
     <p style="font-size: 12pt; font-weight: 600; margin: 0;">腸を整えるように、心も整える。</p>
   </div>
 </div>
