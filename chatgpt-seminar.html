@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>思考と感情の腸活 〜スマホでできる心のデトックス体験〜</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #1B5E20;
+      --primary-dark: #0D3B11;
+      --primary-light: #4CAF50;
+      --primary-pale: #E8F5E9;
+      --gold: #D4AF37;
+      --gold-light: #F4E4BC;
+      --gold-dark: #A68929;
+      --gold-pale: #FBF8F0;
+      --white: #FFFFFF;
+      --cream: #FFFEF7;
+      --gray-light: #F5F5F5;
+      --gray-border: #E0E0E0;
+      --gray-text: #424242;
+      --black: #212121;
+      --font-serif: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-serif);
+      font-size: 10pt;
+      line-height: 1.8;
+      color: var(--black);
+      background: #D5D8DC;
+    }
+
+    /* PDF出力ボタン */
+    .pdf-controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      gap: 10px;
+    }
+
+    .pdf-btn {
+      padding: 12px 24px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-family: var(--font-serif);
+      font-size: 11pt;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .pdf-btn:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
+    /* A4ページ設定 */
+    .page {
+      width: 210mm;
+      height: 297mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      padding: 12mm;
+      margin: 10mm auto;
+      background: var(--white);
+      position: relative;
+      page-break-after: always;
+      box-shadow: 0 4mm 20mm rgba(0,0,0,0.15);
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    /* ページフレーム */
+    .page::before {
+      content: '';
+      position: absolute;
+      top: 6mm;
+      left: 6mm;
+      right: 6mm;
+      bottom: 6mm;
+      border: 0.4mm solid var(--gold);
+      pointer-events: none;
+    }
+
+    .page::after {
+      content: '';
+      position: absolute;
+      top: 8mm;
+      left: 8mm;
+      right: 8mm;
+      bottom: 8mm;
+      border: 0.2mm solid var(--primary-light);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    /* コーナー装飾 */
+    .corner-tl, .corner-tr, .corner-bl, .corner-br {
+      position: absolute;
+      width: 10mm;
+      height: 10mm;
+    }
+
+    .corner-tl {
+      top: 6mm;
+      left: 6mm;
+      border-top: 1.2mm solid var(--gold);
+      border-left: 1.2mm solid var(--gold);
+    }
+
+    .corner-tr {
+      top: 6mm;
+      right: 6mm;
+      border-top: 1.2mm solid var(--gold);
+      border-right: 1.2mm solid var(--gold);
+    }
+
+    .corner-bl {
+      bottom: 6mm;
+      left: 6mm;
+      border-bottom: 1.2mm solid var(--gold);
+      border-left: 1.2mm solid var(--gold);
+    }
+
+    .corner-br {
+      bottom: 6mm;
+      right: 6mm;
+      border-bottom: 1.2mm solid var(--gold);
+      border-right: 1.2mm solid var(--gold);
+    }
+
+    /* 表面スタイル */
+    .front-page {
+      display: flex;
+      flex-direction: column;
+      padding: 15mm;
+    }
+
+    .header-label {
+      text-align: center;
+      font-size: 9pt;
+      color: var(--gold-dark);
+      letter-spacing: 0.3em;
+      margin-bottom: 8mm;
+    }
+
+    .main-title {
+      text-align: center;
+      margin-bottom: 10mm;
+    }
+
+    .main-title h1 {
+      font-size: 26pt;
+      color: var(--primary);
+      letter-spacing: 0.1em;
+      margin-bottom: 5mm;
+      line-height: 1.3;
+    }
+
+    .main-title .subtitle {
+      font-size: 12pt;
+      color: var(--gold-dark);
+      letter-spacing: 0.15em;
+    }
+
+    .intro-text {
+      background: var(--gold-pale);
+      border-left: 3mm solid var(--gold);
+      padding: 8mm;
+      margin-bottom: 10mm;
+      font-size: 10pt;
+      line-height: 2;
+      color: var(--gray-text);
+    }
+
+    .concept-box {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
+      padding: 8mm;
+      margin-bottom: 10mm;
+      text-align: center;
+    }
+
+    .concept-box p {
+      font-size: 11pt;
+      line-height: 1.8;
+      margin-bottom: 0;
+    }
+
+    .concept-box strong {
+      color: var(--gold-light);
+    }
+
+    .benefits-section h2 {
+      font-size: 13pt;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 6mm;
+      padding-bottom: 3mm;
+      border-bottom: 0.5mm solid var(--gold);
+    }
+
+    .benefits-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .benefits-list li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 4mm;
+      font-size: 10pt;
+    }
+
+    .benefits-list li::before {
+      content: '';
+      width: 4mm;
+      height: 4mm;
+      background: var(--gold);
+      border-radius: 50%;
+      margin-right: 3mm;
+      margin-top: 1.5mm;
+      flex-shrink: 0;
+    }
+
+    .closing-message {
+      margin-top: auto;
+      text-align: center;
+      padding: 6mm;
+      background: var(--primary-pale);
+      border-radius: 3mm;
+    }
+
+    .closing-message p {
+      font-size: 12pt;
+      color: var(--primary);
+      font-weight: 600;
+      margin: 0;
+      letter-spacing: 0.05em;
+    }
+
+    .closing-message .sub {
+      font-size: 10pt;
+      color: var(--gray-text);
+      font-weight: 400;
+      margin-top: 2mm;
+    }
+
+    /* 裏面スタイル */
+    .back-page {
+      padding: 12mm 15mm;
+    }
+
+    .section-title {
+      font-size: 14pt;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 6mm;
+      padding-bottom: 3mm;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40mm;
+      height: 0.6mm;
+      background: linear-gradient(90deg, transparent, var(--gold), var(--gold), transparent);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5mm;
+      margin-bottom: 8mm;
+    }
+
+    .content-card {
+      background: var(--cream);
+      border: 0.3mm solid var(--gray-border);
+      border-left: 2mm solid var(--gold);
+      padding: 5mm;
+    }
+
+    .content-card h3 {
+      font-size: 10pt;
+      color: var(--primary);
+      margin-bottom: 2mm;
+      display: flex;
+      align-items: center;
+    }
+
+    .content-card h3 .num {
+      background: var(--gold);
+      color: white;
+      width: 5mm;
+      height: 5mm;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8pt;
+      margin-right: 2mm;
+    }
+
+    .content-card p {
+      font-size: 8.5pt;
+      line-height: 1.6;
+      color: var(--gray-text);
+      margin: 0;
+    }
+
+    /* 開催概要 */
+    .event-info {
+      background: var(--primary-pale);
+      border: 0.5mm solid var(--primary);
+      border-radius: 3mm;
+      padding: 6mm;
+      margin-bottom: 8mm;
+    }
+
+    .event-info h2 {
+      font-size: 12pt;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 5mm;
+      border-bottom: 0.3mm solid var(--gold);
+      padding-bottom: 3mm;
+    }
+
+    .info-table {
+      width: 100%;
+      font-size: 9.5pt;
+    }
+
+    .info-table tr {
+      border-bottom: 0.2mm solid var(--gray-border);
+    }
+
+    .info-table th {
+      width: 22%;
+      padding: 3mm 2mm;
+      background: var(--white);
+      color: var(--primary);
+      font-weight: 500;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .info-table td {
+      padding: 3mm 2mm;
+      vertical-align: top;
+    }
+
+    .info-table .important {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .info-table .note {
+      font-size: 8pt;
+      color: var(--gold-dark);
+      margin-top: 1mm;
+    }
+
+    /* 得られること */
+    .result-section {
+      margin-bottom: 6mm;
+    }
+
+    .result-section h2 {
+      font-size: 11pt;
+      color: var(--primary);
+      margin-bottom: 4mm;
+      padding-left: 3mm;
+      border-left: 2mm solid var(--gold);
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3mm;
+    }
+
+    .result-item {
+      text-align: center;
+      padding: 4mm 2mm;
+      background: var(--gold-pale);
+      border-radius: 2mm;
+    }
+
+    .result-item .icon {
+      font-size: 16pt;
+      margin-bottom: 2mm;
+    }
+
+    .result-item p {
+      font-size: 8pt;
+      color: var(--gray-text);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    /* フッター */
+    .footer-message {
+      text-align: center;
+      padding: 5mm;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
+      border-radius: 3mm;
+    }
+
+    .footer-message p {
+      font-size: 11pt;
+      margin: 0;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-message .sub {
+      font-size: 9pt;
+      color: var(--gold-light);
+      margin-top: 2mm;
+    }
+
+    /* 印刷設定 */
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      body {
+        background: white !important;
+      }
+
+      .pdf-controls {
+        display: none !important;
+      }
+
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+        page-break-after: always;
+      }
+
+      @page {
+        size: A4;
+        margin: 0;
+      }
+    }
+
+    /* レスポンシブ（プレビュー用） */
+    @media screen and (max-width: 220mm) {
+      .page {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        max-height: none;
+        padding: 8mm;
+        margin: 5mm;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .result-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pdf-controls {
+        position: static;
+        justify-content: center;
+        padding: 15px;
+        background: var(--primary);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- PDF出力ボタン -->
+<div class="pdf-controls">
+  <button class="pdf-btn" onclick="window.print()">PDF出力 / 印刷</button>
+</div>
+
+<!-- 表面 -->
+<div class="page front-page">
+  <div class="corner-tl"></div>
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
+  <div class="corner-br"></div>
+
+  <p class="header-label">Special Workshop for Women</p>
+
+  <div class="main-title">
+    <h1>思考と感情の腸活</h1>
+    <p class="subtitle">〜スマホでできる、心のデトックス体験〜</p>
+  </div>
+
+  <div class="intro-text">
+    <p style="margin-bottom: 3mm;">がんばっているのに、なぜか疲れる。<br>
+    考えすぎて、気持ちが重くなる。<br>
+    言葉にできないモヤモヤを、ずっと抱えている。</p>
+
+    <p style="margin: 0;">腸を整えると、体が軽くなるように<br>
+    思考と感情も「整える」ことで、心は自然に軽くなります。</p>
+  </div>
+
+  <div class="concept-box">
+    <p>この講座では、<br>
+    <strong>ChatGPTを"考えるAI"ではなく<br>
+    「思考と感情を整えるパートナー」</strong>として<br>
+    使う方法を体験します。</p>
+  </div>
+
+  <p style="text-align: center; font-size: 9pt; color: var(--gray-text); margin-bottom: 8mm;">
+    文章が苦手でも大丈夫。難しい操作は一切ありません。<br>
+    スマホに話しかけるだけで、気持ちが整理され、考えすぎがほどけ、判断が楽になる。<br>
+    そんな新しい習慣を、90分で体感していただきます。
+  </p>
+
+  <div class="benefits-section">
+    <h2>こんな方におすすめです</h2>
+    <ul class="benefits-list">
+      <li>気づくと、いつも考えすぎてしまう</li>
+      <li>気持ちの切り替えに時間がかかる</li>
+      <li>言いたいことを飲み込むことが多い</li>
+      <li>頭の中をスッキリさせたい</li>
+      <li>腸活・体調管理と同じように、心も整えたい</li>
+    </ul>
+  </div>
+
+  <div class="closing-message">
+    <p>書かなくていい。考えなくていい。</p>
+    <p class="sub">「思考の腸活」、体験してみませんか。</p>
+  </div>
+</div>
+
+<!-- 裏面 -->
+<div class="page back-page">
+  <div class="corner-tl"></div>
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
+  <div class="corner-br"></div>
+
+  <h2 class="section-title">講座内容（体験型・対面）</h2>
+
+  <div class="content-grid">
+    <div class="content-card">
+      <h3><span class="num">1</span>思考と感情は、溜めると重くなる</h3>
+      <p>腸内環境と同じように、思考や感情も「出して・整える」ことで、本来の流れを取り戻します。</p>
+    </div>
+    <div class="content-card">
+      <h3><span class="num">2</span>スマホに話しかけるだけの体験</h3>
+      <p>今日の気分、最近のモヤモヤ、言葉にならない感情を、そのまま音声入力で話します。</p>
+    </div>
+    <div class="content-card">
+      <h3><span class="num">3</span>ChatGPTが"やさしく整理"</h3>
+      <p>3行でまとめる。自分を責めない言葉に整える。今の自分に必要な視点を受け取る。</p>
+    </div>
+    <div class="content-card">
+      <h3><span class="num">4</span>日常にすぐ使える実践</h3>
+      <p>LINEやメッセージの文章作成、角が立たない伝え方、気持ちの切り替え方を体験します。</p>
+    </div>
+  </div>
+
+  <div class="event-info">
+    <h2>開催概要</h2>
+    <table class="info-table">
+      <tr>
+        <th>日時</th>
+        <td>
+          <span class="important">2025年1月26日（日）</span><br>
+          13:00〜14:30（90分）
+        </td>
+      </tr>
+      <tr>
+        <th>場所</th>
+        <td>
+          <span class="important">新宿エルタワー 15階</span><br>
+          フローラサンティ 会議室<br>
+          <span style="font-size: 8pt; color: var(--gray-text);">（東京都新宿区西新宿1-6-1）</span>
+        </td>
+      </tr>
+      <tr>
+        <th>持ち物</th>
+        <td>
+          <span class="important">スマートフォン</span><br>
+          <p class="note">※事前に ChatGPTアプリをダウンロードし、<br>登録を済ませてからご参加ください。</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="result-section">
+    <h2>この講座で得られること</h2>
+    <div class="result-grid">
+      <div class="result-item">
+        <div class="icon" style="color: var(--primary);">&#x1F9D8;</div>
+        <p>考えすぎを<br>手放す感覚</p>
+      </div>
+      <div class="result-item">
+        <div class="icon" style="color: var(--gold-dark);">&#x1F4AD;</div>
+        <p>気持ちを<br>溜め込まない方法</p>
+      </div>
+      <div class="result-item">
+        <div class="icon" style="color: var(--primary);">&#x2728;</div>
+        <p>「整ってから動く」<br>新しい習慣</p>
+      </div>
+      <div class="result-item">
+        <div class="icon" style="color: var(--gold-dark);">&#x1F4F1;</div>
+        <p>スマホ1台で<br>できるセルフケア</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-message">
+    <p>腸を整えるように、心も整える。</p>
+    <p class="sub">今日からできる「思考の腸活」、はじめてみませんか。</p>
+  </div>
+</div>
+
+</body>
+</html>
