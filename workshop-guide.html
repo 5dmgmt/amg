@@ -626,19 +626,293 @@
       margin-top: 2px;
     }
 
-    /* レスポンシブ */
-    @media (max-width: 400px) {
+    /* レスポンシブ - タブレット */
+    @media (max-width: 768px) {
+      body {
+        font-size: 15px;
+      }
+
+      .container {
+        padding: 0 12px;
+      }
+
+      .section {
+        margin: 16px 0;
+      }
+
+      .intro {
+        margin: 16px 12px;
+        padding: 20px 16px;
+      }
+
+      .flow-chart {
+        gap: 6px;
+      }
+
+      .flow-item {
+        padding: 10px 16px;
+      }
+    }
+
+    /* レスポンシブ - スマホ */
+    @media (max-width: 480px) {
+      body {
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .header {
+        padding: 20px 16px;
+      }
+
       .header h1 {
         font-size: 18px;
       }
 
+      .header .subtitle {
+        font-size: 11px;
+      }
+
+      .nav {
+        padding: 10px 6px;
+        gap: 3px;
+        top: 68px;
+      }
+
       .nav-btn {
         font-size: 11px;
-        padding: 6px 10px;
+        padding: 7px 10px;
+        border-radius: 16px;
+      }
+
+      .container {
+        padding: 0 10px;
+      }
+
+      .section {
+        margin: 14px 0;
+        border-radius: 10px;
+      }
+
+      .section-header {
+        padding: 14px 16px;
+        gap: 10px;
+      }
+
+      .section-header .step-num {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
       }
 
       .section-header h2 {
         font-size: 14px;
+      }
+
+      .section-content {
+        padding: 16px;
+      }
+
+      .intro {
+        margin: 14px 10px;
+        padding: 16px 14px;
+      }
+
+      .intro h3 {
+        font-size: 15px;
+      }
+
+      .intro p {
+        font-size: 13px;
+      }
+
+      .subsection h3 {
+        font-size: 14px;
+      }
+
+      .subsection p {
+        font-size: 13px;
+      }
+
+      .prompt-card {
+        padding: 14px;
+      }
+
+      .prompt-card .prompt-text {
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .copy-btn {
+        padding: 12px;
+        font-size: 14px;
+        min-height: 44px;
+      }
+
+      .hint-box {
+        padding: 10px 14px;
+      }
+
+      .hint-box p {
+        font-size: 12px;
+      }
+
+      .step-list li {
+        gap: 10px;
+        margin-bottom: 14px;
+        padding-bottom: 14px;
+      }
+
+      .step-list .num {
+        width: 22px;
+        height: 22px;
+        font-size: 11px;
+      }
+
+      .step-list .content strong {
+        font-size: 13px;
+      }
+
+      .step-list .content p {
+        font-size: 12px;
+      }
+
+      .key-point {
+        padding: 14px;
+      }
+
+      .key-point h4 {
+        font-size: 13px;
+      }
+
+      .key-point p {
+        font-size: 13px;
+      }
+
+      .flow-item {
+        padding: 10px 12px;
+      }
+
+      .flow-item .title {
+        font-size: 14px;
+      }
+
+      .magic-card {
+        padding: 14px;
+      }
+
+      .magic-card .magic-text {
+        font-size: 15px;
+      }
+
+      .example {
+        font-size: 12px;
+        padding: 10px 14px;
+      }
+
+      .sub-accordion-header {
+        padding: 10px 14px;
+        font-size: 13px;
+      }
+
+      .sub-accordion-content {
+        padding: 14px;
+      }
+
+      .sub-accordion-content p {
+        font-size: 13px;
+      }
+
+      .fab {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        bottom: 16px;
+        right: 16px;
+      }
+
+      .footer {
+        padding: 20px 16px;
+      }
+
+      .footer p {
+        font-size: 11px;
+      }
+
+      .footer .brand {
+        font-size: 13px;
+      }
+    }
+
+    /* レスポンシブ - 小さいスマホ */
+    @media (max-width: 360px) {
+      .header h1 {
+        font-size: 16px;
+      }
+
+      .nav-btn {
+        font-size: 10px;
+        padding: 6px 8px;
+      }
+
+      .section-header h2 {
+        font-size: 13px;
+      }
+
+      .prompt-card .prompt-text {
+        font-size: 12px;
+      }
+
+      .magic-card .magic-text {
+        font-size: 14px;
+      }
+    }
+
+    /* タッチデバイス最適化 */
+    @media (hover: none) and (pointer: coarse) {
+      .copy-btn {
+        min-height: 48px;
+      }
+
+      .nav-btn {
+        min-height: 36px;
+      }
+
+      .section-header {
+        min-height: 56px;
+      }
+
+      .sub-accordion-header {
+        min-height: 48px;
+      }
+    }
+
+    /* ダークモード対応 */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #1a1a1a;
+        color: #e0e0e0;
+      }
+
+      .section {
+        background: #2a2a2a;
+      }
+
+      .intro {
+        background: #2a2a2a;
+      }
+
+      .prompt-card {
+        background: #1e3320;
+        border-color: #2e5830;
+      }
+
+      .hint-box {
+        background: #2a2518;
+      }
+
+      .magic-card {
+        background: linear-gradient(135deg, #2a2518, #2a2a2a);
       }
     }
   </style>
