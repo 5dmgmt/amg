@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>思考と感情の腸活 ワークショップガイド</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #1B5E20;
+      --primary-dark: #0D3B11;
+      --primary-light: #4CAF50;
+      --primary-pale: #E8F5E9;
+      --gold: #D4AF37;
+      --gold-light: #F4E4BC;
+      --gold-dark: #A68929;
+      --gold-pale: #FBF8F0;
+      --white: #FFFFFF;
+      --cream: #FFFEF7;
+      --gray-light: #F5F5F5;
+      --gray-border: #E0E0E0;
+      --gray-text: #424242;
+      --black: #212121;
+      --font-serif: "Noto Serif JP", "Source Han Serif JP", "源ノ明朝", "Yu Mincho", "Hiragino Mincho ProN", serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--black);
+      background: var(--cream);
+      padding-bottom: 80px;
+    }
+
+    /* ヘッダー */
+    .header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
+      padding: 24px 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .header h1 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .header .subtitle {
+      font-size: 12px;
+      color: var(--gold-light);
+      letter-spacing: 0.1em;
+    }
+
+    /* ナビゲーション */
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      padding: 12px 8px;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-border);
+      position: sticky;
+      top: 76px;
+      z-index: 99;
+      overflow-x: auto;
+    }
+
+    .nav-btn {
+      padding: 8px 12px;
+      background: var(--gray-light);
+      border: none;
+      border-radius: 20px;
+      font-family: var(--font-serif);
+      font-size: 12px;
+      color: var(--gray-text);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn.active {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .nav-btn:hover {
+      background: var(--primary-light);
+      color: var(--white);
+    }
+
+    /* メインコンテンツ */
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* セクション */
+    .section {
+      margin: 24px 0;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    .section-header {
+      padding: 16px 20px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-header .step-num {
+      width: 32px;
+      height: 32px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .section-header h2 {
+      font-size: 16px;
+      font-weight: 600;
+      flex: 1;
+    }
+
+    .section-header .toggle {
+      font-size: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .section-header.open .toggle {
+      transform: rotate(180deg);
+    }
+
+    .section-content {
+      padding: 20px;
+      display: none;
+    }
+
+    .section-content.open {
+      display: block;
+    }
+
+    /* イントロ */
+    .intro {
+      padding: 24px 20px;
+      background: var(--gold-pale);
+      border-left: 4px solid var(--gold);
+      margin: 20px 16px;
+      border-radius: 0 12px 12px 0;
+    }
+
+    .intro h3 {
+      font-size: 16px;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .intro p {
+      font-size: 14px;
+      color: var(--gray-text);
+      margin-bottom: 8px;
+    }
+
+    /* サブセクション */
+    .subsection {
+      margin-bottom: 24px;
+    }
+
+    .subsection:last-child {
+      margin-bottom: 0;
+    }
+
+    .subsection h3 {
+      font-size: 15px;
+      color: var(--primary);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .subsection h3::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    .subsection p {
+      font-size: 14px;
+      color: var(--gray-text);
+      margin-bottom: 12px;
+    }
+
+    /* プロンプトカード */
+    .prompt-card {
+      background: var(--primary-pale);
+      border: 1px solid var(--primary-light);
+      border-radius: 8px;
+      padding: 16px;
+      margin: 12px 0;
+      position: relative;
+    }
+
+    .prompt-card .label {
+      position: absolute;
+      top: -10px;
+      left: 12px;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 10px;
+      padding: 2px 10px;
+      border-radius: 10px;
+      letter-spacing: 0.05em;
+    }
+
+    .prompt-card .prompt-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--primary-dark);
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--primary-light);
+      margin-bottom: 8px;
+    }
+
+    .prompt-card .prompt-text strong {
+      color: var(--gold-dark);
+    }
+
+    .copy-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      padding: 10px;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      font-family: var(--font-serif);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .copy-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .copy-btn.copied {
+      background: var(--gold-dark);
+    }
+
+    /* ヒントボックス */
+    .hint-box {
+      background: var(--gold-pale);
+      border-left: 3px solid var(--gold);
+      padding: 12px 16px;
+      margin: 12px 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .hint-box .hint-title {
+      font-size: 12px;
+      color: var(--gold-dark);
+      font-weight: 600;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .hint-box p {
+      font-size: 13px;
+      color: var(--gray-text);
+      margin: 0;
+    }
+
+    /* ステップリスト */
+    .step-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .step-list li {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    .step-list li:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .step-list .num {
+      width: 24px;
+      height: 24px;
+      background: var(--gold);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .step-list .content {
+      flex: 1;
+    }
+
+    .step-list .content strong {
+      display: block;
+      font-size: 14px;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .step-list .content p {
+      font-size: 13px;
+      color: var(--gray-text);
+      margin: 0;
+    }
+
+    /* ワークエリア */
+    .work-area {
+      background: var(--gray-light);
+      border: 2px dashed var(--gray-border);
+      border-radius: 8px;
+      padding: 16px;
+      margin: 12px 0;
+    }
+
+    .work-area h4 {
+      font-size: 13px;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .work-area textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 12px;
+      border: 1px solid var(--gray-border);
+      border-radius: 6px;
+      font-family: var(--font-serif);
+      font-size: 14px;
+      line-height: 1.6;
+      resize: vertical;
+    }
+
+    .work-area textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    /* 重要ポイント */
+    .key-point {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
+      padding: 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+
+    .key-point h4 {
+      font-size: 14px;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+
+    .key-point p {
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* フローチャート */
+    .flow-chart {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin: 20px 0;
+    }
+
+    .flow-item {
+      background: var(--white);
+      border: 2px solid var(--primary);
+      border-radius: 8px;
+      padding: 12px 24px;
+      text-align: center;
+      width: 100%;
+      max-width: 280px;
+    }
+
+    .flow-item.active {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .flow-item .num {
+      font-size: 11px;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .flow-item.active .num {
+      color: var(--gold-light);
+    }
+
+    .flow-item .title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .flow-arrow {
+      color: var(--primary);
+      font-size: 20px;
+    }
+
+    /* フッター */
+    .footer {
+      background: var(--primary-dark);
+      color: var(--white);
+      text-align: center;
+      padding: 24px 20px;
+      margin-top: 40px;
+    }
+
+    .footer p {
+      font-size: 12px;
+      opacity: 0.8;
+      margin-bottom: 4px;
+    }
+
+    .footer .brand {
+      font-size: 14px;
+      color: var(--gold-light);
+    }
+
+    /* フローティングボタン */
+    .fab {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+
+    .fab:hover {
+      background: var(--gold-dark);
+      transform: scale(1.1);
+    }
+
+    /* アコーディオン内のサブアコーディオン */
+    .sub-accordion {
+      border: 1px solid var(--gray-border);
+      border-radius: 8px;
+      margin: 12px 0;
+      overflow: hidden;
+    }
+
+    .sub-accordion-header {
+      padding: 12px 16px;
+      background: var(--gray-light);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--primary);
+    }
+
+    .sub-accordion-content {
+      padding: 16px;
+      display: none;
+      background: var(--white);
+    }
+
+    .sub-accordion-content.open {
+      display: block;
+    }
+
+    /* 例文 */
+    .example {
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin: 8px 0;
+      font-size: 13px;
+      color: var(--gray-text);
+      border-left: 3px solid var(--primary-light);
+    }
+
+    .example strong {
+      color: var(--primary);
+    }
+
+    /* プログレスバー */
+    .progress-container {
+      padding: 16px 20px;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    .progress-bar {
+      height: 6px;
+      background: var(--gray-light);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--gold));
+      border-radius: 3px;
+      transition: width 0.5s ease;
+    }
+
+    .progress-text {
+      font-size: 11px;
+      color: var(--gray-text);
+      margin-top: 6px;
+      text-align: center;
+    }
+
+    /* 魔法の言葉カード */
+    .magic-card {
+      background: linear-gradient(135deg, var(--gold-pale), var(--white));
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 12px 0;
+      text-align: center;
+    }
+
+    .magic-card .magic-title {
+      font-size: 11px;
+      color: var(--gold-dark);
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .magic-card .magic-text {
+      font-size: 16px;
+      color: var(--primary);
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    /* チェックリスト */
+    .checklist {
+      list-style: none;
+      padding: 0;
+    }
+
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--gray-border);
+      font-size: 14px;
+    }
+
+    .checklist li:last-child {
+      border-bottom: none;
+    }
+
+    .checklist input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 400px) {
+      .header h1 {
+        font-size: 18px;
+      }
+
+      .nav-btn {
+        font-size: 11px;
+        padding: 6px 10px;
+      }
+
+      .section-header h2 {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="header">
+  <h1>思考と感情の腸活</h1>
+  <p class="subtitle">ワークショップガイド</p>
+</header>
+
+<!-- ナビゲーション -->
+<nav class="nav">
+  <button class="nav-btn active" onclick="scrollToSection('intro')">はじめに</button>
+  <button class="nav-btn" onclick="scrollToSection('step1')">認識</button>
+  <button class="nav-btn" onclick="scrollToSection('step2')">受容</button>
+  <button class="nav-btn" onclick="scrollToSection('step3')">選択</button>
+  <button class="nav-btn" onclick="scrollToSection('step4')">行動</button>
+  <button class="nav-btn" onclick="scrollToSection('daily')">日常</button>
+</nav>
+
+<main class="container">
+
+<!-- イントロダクション -->
+<div class="intro" id="intro">
+  <h3>このガイドについて</h3>
+  <p>このガイドは、ChatGPTを「思考と感情を整えるパートナー」として活用するための実践マニュアルです。</p>
+  <p>4つのステップ（認識→受容→選択→行動）を通じて、考えすぎや感情の重さを手放し、心を軽くする方法を学びます。</p>
+  <p><strong>書かなくていい。考えなくていい。</strong><br>スマホに話しかけるだけで、気持ちが整理されていきます。</p>
+</div>
+
+<!-- 4ステップの流れ -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="step-num">!</div>
+    <h2>4ステップの全体像</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-content">
+    <p style="font-size: 14px; margin-bottom: 16px;">思考と感情を整える基本の流れです。腸活と同じように「出して→整えて→戻す」ことで、心本来のリズムを取り戻します。</p>
+
+    <div class="flow-chart">
+      <div class="flow-item">
+        <div class="num">STEP 1</div>
+        <div class="title">自己認識</div>
+        <div style="font-size: 12px; color: var(--gray-text);">今の気持ちに気づく</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item">
+        <div class="num">STEP 2</div>
+        <div class="title">自己受容</div>
+        <div style="font-size: 12px; color: var(--gray-text);">その気持ちを認める</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item">
+        <div class="num">STEP 3</div>
+        <div class="title">選択</div>
+        <div style="font-size: 12px; color: var(--gray-text);">どうしたいかを決める</div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item">
+        <div class="num">STEP 4</div>
+        <div class="title">行動</div>
+        <div style="font-size: 12px; color: var(--gray-text);">小さな一歩を踏み出す</div>
+      </div>
+    </div>
+
+    <div class="key-point">
+      <h4>大切なポイント</h4>
+      <p>順番を飛ばさないこと。認識→受容を経ずに行動すると、また同じ思考パターンに戻ってしまいます。</p>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 1: 自己認識 -->
+<div class="section" id="step1">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="step-num">1</div>
+    <h2>自己認識 〜今の気持ちに気づく〜</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-content">
+
+    <div class="subsection">
+      <h3>自己認識とは</h3>
+      <p>「今、自分が何を感じているか」に気づくことです。私たちは忙しい日常の中で、自分の感情を見て見ぬふりをしがちです。</p>
+      <p>まず「出す」ことで、初めて自分の状態が見えてきます。腸活で言えば「溜まっているものを出す」段階です。</p>
+    </div>
+
+    <div class="subsection">
+      <h3>基本の使い方</h3>
+      <ol class="step-list">
+        <li>
+          <span class="num">1</span>
+          <div class="content">
+            <strong>ChatGPTを開く</strong>
+            <p>アプリを開き、マイクボタンをタップします。</p>
+          </div>
+        </li>
+        <li>
+          <span class="num">2</span>
+          <div class="content">
+            <strong>今の気持ちを話す</strong>
+            <p>文章にしなくてOK。「なんか疲れた」「モヤモヤする」だけでも大丈夫です。</p>
+          </div>
+        </li>
+        <li>
+          <span class="num">3</span>
+          <div class="content">
+            <strong>整理をお願いする</strong>
+            <p>下のプロンプトをコピーして送信します。</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="subsection">
+      <h3>使えるプロンプト</h3>
+
+      <div class="prompt-card">
+        <span class="label">基本</span>
+        <div class="prompt-text">
+          今の気持ちを、やさしく整理してください。<br>
+          批判や分析はせず、ただ聴いて、<br>
+          「あなたは今こう感じているんですね」と<br>
+          まとめてください。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+
+      <div class="prompt-card">
+        <span class="label">深掘り</span>
+        <div class="prompt-text">
+          私が話したことの中で、<br>
+          一番心に引っかかっている部分は<br>
+          どこだと思いますか？<br>
+          やさしく教えてください。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+
+      <div class="prompt-card">
+        <span class="label">感情の言語化</span>
+        <div class="prompt-text">
+          このモヤモヤを、感情の言葉で<br>
+          表現するとしたら何ですか？<br>
+          「悲しい」「不安」「怒り」など、<br>
+          しっくりくる言葉を探してください。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="hint-box">
+      <div class="hint-title">💡 ポイント</div>
+      <p>最初は「うまく話せない」と感じるかもしれません。でも、ChatGPTは途切れ途切れでも、矛盾していても、ちゃんと聴いてくれます。完璧に話す必要はありません。</p>
+    </div>
+
+    <div class="subsection">
+      <h3>よくある気づきの例</h3>
+      <div class="example">
+        <strong>入力：</strong>「なんか最近ずっと疲れてる。仕事は普通にできてるんだけど、帰ってきても何もしたくない」<br><br>
+        <strong>気づき：</strong>「がんばりすぎている自分」「休むことへの罪悪感」「本当は助けてほしい」などの感情が見えてくることがあります。
+      </div>
+    </div>
+
+    <div class="key-point">
+      <h4>このステップのゴール</h4>
+      <p>「今、自分はこう感じているんだな」と言葉にできる状態になること。正しいかどうかは関係ありません。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- STEP 2: 自己受容 -->
+<div class="section" id="step2">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="step-num">2</div>
+    <h2>自己受容 〜その気持ちを認める〜</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-content">
+
+    <div class="subsection">
+      <h3>自己受容とは</h3>
+      <p>認識した感情を「それでいいんだ」と受け入れることです。多くの人が、ネガティブな感情を「だめだ」「弱い」と否定しがちです。</p>
+      <p>でも、感情はただの「信号」。良いも悪いもありません。まず受け入れることで、感情に支配されなくなります。</p>
+    </div>
+
+    <div class="subsection">
+      <h3>なぜ受容が必要？</h3>
+      <p>感情を否定すると、それは消えるのではなく「溜まる」だけです。腸に老廃物が溜まるように、心にも感情の「便秘」が起きます。</p>
+      <p>受容することで初めて、感情は流れていきます。</p>
+    </div>
+
+    <div class="subsection">
+      <h3>使えるプロンプト</h3>
+
+      <div class="prompt-card">
+        <span class="label">受容サポート</span>
+        <div class="prompt-text">
+          私のこの気持ちを、<br>
+          責めずに、そのまま認めてください。<br>
+          「そう感じるのは自然なことです」と<br>
+          やさしく伝えてください。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+
+      <div class="prompt-card">
+        <span class="label">自分を責めない視点</span>
+        <div class="prompt-text">
+          私が今抱えている感情を、<br>
+          「自分を責めない視点」で<br>
+          言い換えてもらえますか？<br>
+          同じ状況でも、自分を大切にする言葉で。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+
+      <div class="prompt-card">
+        <span class="label">親友視点</span>
+        <div class="prompt-text">
+          もし親友が同じ悩みを話してきたら、<br>
+          私はなんて声をかけるでしょうか？<br>
+          その言葉を、今の私に向けて<br>
+          言ってください。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+
+      <div class="prompt-card">
+        <span class="label">感情の肯定</span>
+        <div class="prompt-text">
+          「この感情を持っていても大丈夫な理由」を<br>
+          3つ教えてください。<br>
+          私を励ますのではなく、<br>
+          この感情の「意味」を教えてください。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="magic-card">
+      <div class="magic-title">魔法の言葉</div>
+      <div class="magic-text">
+        「こう感じている私がいる」<br>
+        「それは、自然なこと」
+      </div>
+    </div>
+
+    <div class="hint-box">
+      <div class="hint-title">💡 受容のコツ</div>
+      <p>「感情を受け入れる」と「状況を受け入れる」は違います。「怒りを感じている自分」を認めることと、「怒らせた相手を許す」ことは別の話です。まずは感情だけを認めましょう。</p>
+    </div>
+
+    <div class="subsection">
+      <h3>受容が難しいとき</h3>
+      <p>「でも」「だって」が出てきたら、それも認めてください。</p>
+
+      <div class="prompt-card">
+        <span class="label">抵抗がある時</span>
+        <div class="prompt-text">
+          私は今「自分を認めたくない」と<br>
+          感じています。<br>
+          この抵抗感も含めて、<br>
+          やさしく受け止めてください。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="key-point">
+      <h4>このステップのゴール</h4>
+      <p>「この感情を持っている自分を、責めなくていい」と思える状態。感情が消えなくても、戦わなくなること。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- STEP 3: 選択 -->
+<div class="section" id="step3">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="step-num">3</div>
+    <h2>選択 〜どうしたいかを決める〜</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-content">
+
+    <div class="subsection">
+      <h3>選択とは</h3>
+      <p>感情を認識し、受容した上で「では、どうしたいか」を自分で決めることです。感情に流されるのではなく、感情を情報として使います。</p>
+      <p>これは「我慢する」こととは違います。自分の本当の望みに気づき、それを選ぶことです。</p>
+    </div>
+
+    <div class="subsection">
+      <h3>選択の3つのタイプ</h3>
+      <ol class="step-list">
+        <li>
+          <span class="num">A</span>
+          <div class="content">
+            <strong>今は何もしない</strong>
+            <p>休む、待つ、保留する。これも立派な選択です。</p>
+          </div>
+        </li>
+        <li>
+          <span class="num">B</span>
+          <div class="content">
+            <strong>視点を変える</strong>
+            <p>状況は変わらなくても、捉え方を変える。</p>
+          </div>
+        </li>
+        <li>
+          <span class="num">C</span>
+          <div class="content">
+            <strong>行動を起こす</strong>
+            <p>具体的に何かをする。</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="subsection">
+      <h3>使えるプロンプト</h3>
+
+      <div class="prompt-card">
+        <span class="label">選択肢を出す</span>
+        <div class="prompt-text">
+          今の私の状況で、<br>
+          取れる選択肢を3つ教えてください。<br>
+          「何もしない」も含めて、<br>
+          それぞれのメリットも教えて。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+
+      <div class="prompt-card">
+        <span class="label">本当の望みを探る</span>
+        <div class="prompt-text">
+          この状況で、私が「本当は」<br>
+          どうしたいと思っているか、<br>
+          私の話から推測してください。<br>
+          言葉にできていない望みも含めて。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+
+      <div class="prompt-card">
+        <span class="label">視点を変える</span>
+        <div class="prompt-text">
+          この状況を、<br>
+          「自分を大切にする視点」で<br>
+          見直すとどうなりますか？<br>
+          新しい捉え方を教えてください。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+
+      <div class="prompt-card">
+        <span class="label">1年後の視点</span>
+        <div class="prompt-text">
+          1年後の私から見たら、<br>
+          今の悩みはどう見えるでしょうか？<br>
+          未来の私からのアドバイスを<br>
+          想像して教えてください。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+
+      <div class="prompt-card">
+        <span class="label">「べき」を外す</span>
+        <div class="prompt-text">
+          私の話に出てきた「〜すべき」を<br>
+          見つけてください。<br>
+          そして「〜したい」に<br>
+          言い換えるとどうなるか教えて。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="hint-box">
+      <div class="hint-title">💡 選択のコツ</div>
+      <p>「正解」を探さないでください。選択に正解はありません。「今の自分にとって」一番心地よいものを選ぶだけです。あとで変えても大丈夫。</p>
+    </div>
+
+    <div class="subsection">
+      <h3>決められない時</h3>
+      <div class="prompt-card">
+        <span class="label">決断サポート</span>
+        <div class="prompt-text">
+          私は今、決断できずにいます。<br>
+          決められない理由は何だと思いますか？<br>
+          そして、「決めなくていい」という<br>
+          選択肢もあると伝えてください。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="key-point">
+      <h4>このステップのゴール</h4>
+      <p>「私は〇〇を選ぶ」と言える状態。大きな決断でなくていい。「今日は休む」「明日考える」も立派な選択です。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- STEP 4: 行動 -->
+<div class="section" id="step4">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="step-num">4</div>
+    <h2>行動 〜小さな一歩を踏み出す〜</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-content">
+
+    <div class="subsection">
+      <h3>行動とは</h3>
+      <p>選択したことを、実際に行動に移すことです。ここで重要なのは「小さく始める」こと。</p>
+      <p>完璧にやろうとすると動けなくなります。5分でできること、今日できることから始めます。</p>
+    </div>
+
+    <div class="subsection">
+      <h3>行動の3原則</h3>
+      <ol class="step-list">
+        <li>
+          <span class="num">1</span>
+          <div class="content">
+            <strong>小さく</strong>
+            <p>「5分でできること」から始める。</p>
+          </div>
+        </li>
+        <li>
+          <span class="num">2</span>
+          <div class="content">
+            <strong>具体的に</strong>
+            <p>「がんばる」ではなく「〇〇をする」。</p>
+          </div>
+        </li>
+        <li>
+          <span class="num">3</span>
+          <div class="content">
+            <strong>今日中に</strong>
+            <p>「いつか」ではなく「今日」できること。</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="subsection">
+      <h3>使えるプロンプト</h3>
+
+      <div class="prompt-card">
+        <span class="label">行動を具体化</span>
+        <div class="prompt-text">
+          私が選んだことを実行するために、<br>
+          「今日5分でできること」を<br>
+          3つ提案してください。<br>
+          簡単で、すぐできるものをお願いします。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+
+      <div class="prompt-card">
+        <span class="label">最初の一歩</span>
+        <div class="prompt-text">
+          私がこの行動を始めるとしたら、<br>
+          「最初の一歩」は何ですか？<br>
+          本当に小さな、<br>
+          ハードルの低いものを教えて。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+
+      <div class="prompt-card">
+        <span class="label">行動の言語化</span>
+        <div class="prompt-text">
+          私のやりたいことを、<br>
+          「〇〇のために、△△をする」という<br>
+          一文にまとめてください。<br>
+          シンプルで、覚えやすい形で。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+
+      <div class="prompt-card">
+        <span class="label">障害を予測</span>
+        <div class="prompt-text">
+          この行動を続ける上で、<br>
+          つまずきそうなポイントは何ですか？<br>
+          そして、そうなった時の<br>
+          対処法も教えてください。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>行動できない時</h3>
+      <p>「やると決めたのに動けない」時は、まだ認識・受容が足りていないサインかもしれません。STEP 1に戻っても大丈夫です。</p>
+
+      <div class="prompt-card">
+        <span class="label">動けない時</span>
+        <div class="prompt-text">
+          私は行動を決めたのに、<br>
+          動けずにいます。<br>
+          この「動けなさ」の中に、<br>
+          どんな気持ちが隠れていますか？
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="hint-box">
+      <div class="hint-title">💡 行動のコツ</div>
+      <p>行動は「やる気」を待たなくていい。「やる気があるから動く」のではなく「動くからやる気が出る」のです。まず5分だけ、体を動かしてみてください。</p>
+    </div>
+
+    <div class="key-point">
+      <h4>このステップのゴール</h4>
+      <p>「今日これをやった」と言える状態。大きな変化でなくていい。小さな一歩を踏み出したこと自体が成功です。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- 日常での活用 -->
+<div class="section" id="daily">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="step-num">★</div>
+    <h2>日常での活用シーン</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-content">
+
+    <div class="subsection">
+      <h3>毎日の習慣に</h3>
+      <p>朝起きた時、寝る前、気持ちがざわついた時に使えます。</p>
+
+      <div class="prompt-card">
+        <span class="label">朝の整理</span>
+        <div class="prompt-text">
+          おはよう。<br>
+          今日の私の気分を聞いてください。<br>
+          そして「今日を楽にする一言」を<br>
+          プレゼントしてください。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+
+      <div class="prompt-card">
+        <span class="label">夜の振り返り</span>
+        <div class="prompt-text">
+          今日あったことを話します。<br>
+          聴いてもらった後、<br>
+          「今日の私を認める言葉」を<br>
+          かけてください。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>人間関係の悩み</h3>
+
+      <div class="prompt-card">
+        <span class="label">LINE返信</span>
+        <div class="prompt-text">
+          このメッセージへの返信を考えています。<br>
+          やさしくて、誤解されない文章にして。<br>
+          でも、自分を押し殺さない表現で。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+
+      <div class="prompt-card">
+        <span class="label">断り方</span>
+        <div class="prompt-text">
+          〇〇を断りたいのですが、<br>
+          角が立たない断り方を教えてください。<br>
+          罪悪感を感じなくていい<br>
+          言い方でお願いします。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+
+      <div class="prompt-card">
+        <span class="label">お願いの仕方</span>
+        <div class="prompt-text">
+          〇〇をお願いしたいのですが、<br>
+          押しつけがましくなく、<br>
+          相手も嫌な気持ちにならない<br>
+          伝え方を教えてください。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>仕事の悩み</h3>
+
+      <div class="prompt-card">
+        <span class="label">優先順位</span>
+        <div class="prompt-text">
+          やることがたくさんあって<br>
+          何から手をつけていいかわかりません。<br>
+          リストを伝えるので、<br>
+          優先順位を整理してください。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+
+      <div class="prompt-card">
+        <span class="label">ミスの整理</span>
+        <div class="prompt-text">
+          仕事でミスをしてしまいました。<br>
+          自分を責めすぎないように、<br>
+          「次に活かせること」だけに<br>
+          フォーカスして整理してください。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>自分との対話</h3>
+
+      <div class="prompt-card">
+        <span class="label">自己肯定</span>
+        <div class="prompt-text">
+          今日の私を褒めてください。<br>
+          大げさじゃなくていい。<br>
+          小さなことでいいから、<br>
+          「よくやったね」と言ってほしい。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+
+      <div class="prompt-card">
+        <span class="label">未来の自分へ</span>
+        <div class="prompt-text">
+          今の私から、1週間後の私へ<br>
+          メッセージを書いてください。<br>
+          励ましと、忘れないでほしいことを<br>
+          込めて。
+        </div>
+        <button class="copy-btn" onclick="copyPrompt(this)">
+          <span>コピーする</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 魔法の言葉カード -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="step-num">♡</div>
+    <h2>魔法の言葉カード10選</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-content">
+    <p style="font-size: 14px; margin-bottom: 16px;">困った時にすぐ使える、シンプルなプロンプト集です。コピーしてそのまま使えます。</p>
+
+    <div class="magic-card">
+      <div class="magic-title">CARD 1</div>
+      <div class="magic-text">今の気持ちを、やさしく整理して</div>
+      <button class="copy-btn" onclick="copyText('今の気持ちを、やさしく整理して')" style="margin-top: 12px; background: var(--gold-dark);">コピー</button>
+    </div>
+
+    <div class="magic-card">
+      <div class="magic-title">CARD 2</div>
+      <div class="magic-text">私を責めない視点で、言い換えて</div>
+      <button class="copy-btn" onclick="copyText('私を責めない視点で、言い換えて')" style="margin-top: 12px; background: var(--gold-dark);">コピー</button>
+    </div>
+
+    <div class="magic-card">
+      <div class="magic-title">CARD 3</div>
+      <div class="magic-text">3行でまとめて</div>
+      <button class="copy-btn" onclick="copyText('3行でまとめて')" style="margin-top: 12px; background: var(--gold-dark);">コピー</button>
+    </div>
+
+    <div class="magic-card">
+      <div class="magic-title">CARD 4</div>
+      <div class="magic-text">今日を楽にする一言をください</div>
+      <button class="copy-btn" onclick="copyText('今日を楽にする一言をください')" style="margin-top: 12px; background: var(--gold-dark);">コピー</button>
+    </div>
+
+    <div class="magic-card">
+      <div class="magic-title">CARD 5</div>
+      <div class="magic-text">親友に話すみたいに、聴いて</div>
+      <button class="copy-btn" onclick="copyText('親友に話すみたいに、聴いて')" style="margin-top: 12px; background: var(--gold-dark);">コピー</button>
+    </div>
+
+    <div class="magic-card">
+      <div class="magic-title">CARD 6</div>
+      <div class="magic-text">「べき」を「したい」に変えて</div>
+      <button class="copy-btn" onclick="copyText('「べき」を「したい」に変えて')" style="margin-top: 12px; background: var(--gold-dark);">コピー</button>
+    </div>
+
+    <div class="magic-card">
+      <div class="magic-title">CARD 7</div>
+      <div class="magic-text">今日5分でできることを教えて</div>
+      <button class="copy-btn" onclick="copyText('今日5分でできることを教えて')" style="margin-top: 12px; background: var(--gold-dark);">コピー</button>
+    </div>
+
+    <div class="magic-card">
+      <div class="magic-title">CARD 8</div>
+      <div class="magic-text">やさしい断り方を教えて</div>
+      <button class="copy-btn" onclick="copyText('やさしい断り方を教えて')" style="margin-top: 12px; background: var(--gold-dark);">コピー</button>
+    </div>
+
+    <div class="magic-card">
+      <div class="magic-title">CARD 9</div>
+      <div class="magic-text">小さなことでいいから、褒めて</div>
+      <button class="copy-btn" onclick="copyText('小さなことでいいから、褒めて')" style="margin-top: 12px; background: var(--gold-dark);">コピー</button>
+    </div>
+
+    <div class="magic-card">
+      <div class="magic-title">CARD 10</div>
+      <div class="magic-text">そのまま認めて。解決しなくていい</div>
+      <button class="copy-btn" onclick="copyText('そのまま認めて。解決しなくていい')" style="margin-top: 12px; background: var(--gold-dark);">コピー</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Q&A -->
+<div class="section">
+  <div class="section-header" onclick="toggleSection(this)">
+    <div class="step-num">?</div>
+    <h2>よくある質問</h2>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-content">
+
+    <div class="sub-accordion">
+      <div class="sub-accordion-header" onclick="toggleSubAccordion(this)">
+        Q. うまく話せない時は？
+        <span>▼</span>
+      </div>
+      <div class="sub-accordion-content">
+        <p>完璧に話す必要はありません。「なんかモヤモヤする」「よくわからないけど疲れた」だけでもOKです。ChatGPTは途切れ途切れでも、矛盾していても、ちゃんと聴いてくれます。</p>
+      </div>
+    </div>
+
+    <div class="sub-accordion">
+      <div class="sub-accordion-header" onclick="toggleSubAccordion(this)">
+        Q. 音声入力がうまくいかない時は？
+        <span>▼</span>
+      </div>
+      <div class="sub-accordion-content">
+        <p>静かな場所で、スマホを口元に近づけて話してみてください。それでもうまくいかない場合は、キーボード入力でも大丈夫です。短い文章で少しずつ送るのもおすすめです。</p>
+      </div>
+    </div>
+
+    <div class="sub-accordion">
+      <div class="sub-accordion-header" onclick="toggleSubAccordion(this)">
+        Q. プライバシーは大丈夫？
+        <span>▼</span>
+      </div>
+      <div class="sub-accordion-content">
+        <p>ChatGPTの設定で「チャット履歴をトレーニングに使用しない」をオンにできます。また、実名や具体的な個人情報は伏せて話しても効果は変わりません。</p>
+      </div>
+    </div>
+
+    <div class="sub-accordion">
+      <div class="sub-accordion-header" onclick="toggleSubAccordion(this)">
+        Q. 毎日使わないとダメ？
+        <span>▼</span>
+      </div>
+      <div class="sub-accordion-content">
+        <p>毎日でなくても大丈夫です。「気持ちがざわついた時」「考えすぎている時」など、必要な時に使うだけで効果があります。習慣にすると効果は高まりますが、義務にする必要はありません。</p>
+      </div>
+    </div>
+
+    <div class="sub-accordion">
+      <div class="sub-accordion-header" onclick="toggleSubAccordion(this)">
+        Q. 有料版にした方がいい？
+        <span>▼</span>
+      </div>
+      <div class="sub-accordion-content">
+        <p>このガイドの内容は無料版で十分に実践できます。有料版は回答の質や速度が向上しますが、思考と感情の整理には無料版で十分です。</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 最後のメッセージ -->
+<div class="intro" style="background: linear-gradient(135deg, var(--primary-pale), var(--gold-pale)); border-left-color: var(--primary);">
+  <h3 style="text-align: center;">最後に</h3>
+  <p style="text-align: center;">
+    腸を整えると、体が軽くなるように。<br>
+    思考と感情を整えると、心が軽くなります。
+  </p>
+  <p style="text-align: center;">
+    毎日1回、吐き出す。溜めない。整えてから動く。<br>
+    この習慣が、あなたの日常を少しずつ変えていきます。
+  </p>
+  <p style="text-align: center; font-weight: 600; color: var(--primary);">
+    書かなくていい。考えなくていい。<br>
+    スマホに話しかけるだけ。
+  </p>
+</div>
+
+</main>
+
+<!-- フッター -->
+<footer class="footer">
+  <p>思考と感情の腸活 ワークショップガイド</p>
+  <p class="brand">Powered by ChatGPT</p>
+</footer>
+
+<!-- トップに戻るボタン -->
+<button class="fab" onclick="scrollToTop()">↑</button>
+
+<script>
+  // セクションの開閉
+  function toggleSection(header) {
+    header.classList.toggle('open');
+    const content = header.nextElementSibling;
+    content.classList.toggle('open');
+  }
+
+  // サブアコーディオンの開閉
+  function toggleSubAccordion(header) {
+    const content = header.nextElementSibling;
+    content.classList.toggle('open');
+    const arrow = header.querySelector('span');
+    arrow.textContent = content.classList.contains('open') ? '▲' : '▼';
+  }
+
+  // プロンプトをコピー
+  function copyPrompt(btn) {
+    const card = btn.closest('.prompt-card');
+    const text = card.querySelector('.prompt-text').innerText;
+    copyToClipboard(text, btn);
+  }
+
+  // テキストをコピー
+  function copyText(text) {
+    const btn = event.target;
+    copyToClipboard(text, btn);
+  }
+
+  // クリップボードにコピー
+  function copyToClipboard(text, btn) {
+    navigator.clipboard.writeText(text).then(() => {
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '✓ コピーしました！';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('copied');
+      }, 2000);
+    }).catch(err => {
+      // フォールバック
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '✓ コピーしました！';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+
+  // セクションにスクロール
+  function scrollToSection(id) {
+    const element = document.getElementById(id);
+    if (element) {
+      const headerHeight = document.querySelector('.header').offsetHeight;
+      const navHeight = document.querySelector('.nav').offsetHeight;
+      const offset = headerHeight + navHeight + 10;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: 'smooth'
+      });
+    }
+
+    // ナビボタンのアクティブ状態を更新
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  // トップにスクロール
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  // スクロール時にナビボタンを更新
+  window.addEventListener('scroll', () => {
+    const sections = ['intro', 'step1', 'step2', 'step3', 'step4', 'daily'];
+    const headerHeight = document.querySelector('.header').offsetHeight;
+    const navHeight = document.querySelector('.nav').offsetHeight;
+    const offset = headerHeight + navHeight + 50;
+
+    let currentSection = 'intro';
+
+    sections.forEach(id => {
+      const element = document.getElementById(id);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        if (rect.top <= offset) {
+          currentSection = id;
+        }
+      }
+    });
+
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.classList.remove('active');
+      if (btn.getAttribute('onclick').includes(currentSection)) {
+        btn.classList.add('active');
+      }
+    });
+  });
+
+  // 最初のセクションを開いた状態にする
+  document.addEventListener('DOMContentLoaded', () => {
+    const firstSection = document.querySelector('.section .section-header');
+    if (firstSection) {
+      // 4ステップの全体像を最初に開く
+      // toggleSection(firstSection);
+    }
+  });
+</script>
+
+</body>
+</html>
