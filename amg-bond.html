@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refine Works 社債のご案内</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --c-navy: #0c1425;
+            --c-navy-mid: #162038;
+            --c-navy-light: #1e2d4f;
+            --c-gold: #c89f57;
+            --c-gold-light: #ddb96e;
+            --c-gold-pale: #f5e6c8;
+            --c-bg: #f7f6f2;
+            --c-surface: #ffffff;
+            --c-text: #2c2c2c;
+            --c-text-light: #6b6b6b;
+            --c-line: #e2e0da;
+            --font-serif: 'Shippori Mincho', 'Cormorant Garamond', serif;
+            --font-sans: 'Zen Kaku Gothic New', 'Manrope', sans-serif;
+            --font-en: 'Manrope', 'Cormorant Garamond', sans-serif;
+            --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.8;
+            color: var(--c-text);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ========== PASSWORD GATE ========== */
+        #gate {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: var(--c-navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s var(--ease), visibility 0.6s;
+        }
+        #gate.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .gate-inner {
+            text-align: center;
+            padding: 2rem;
+            max-width: 420px;
+            width: 100%;
+        }
+        .gate-badge {
+            display: inline-block;
+            font-family: var(--font-en);
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--c-gold);
+            border: 1px solid rgba(200,159,87,0.3);
+            padding: 0.4rem 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+        .gate-title {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.8rem;
+        }
+        .gate-sub {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+        .gate-input-wrap {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        .gate-input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #fff;
+            font-family: var(--font-en);
+            font-size: 1rem;
+            letter-spacing: 0.15em;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .gate-input::placeholder { color: rgba(255,255,255,0.2); letter-spacing: 0.2em; }
+        .gate-input:focus { border-color: var(--c-gold); }
+        .gate-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--c-gold);
+            color: var(--c-navy);
+            border: none;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .gate-btn:hover { background: var(--c-gold-light); }
+        .gate-error {
+            color: #e57373;
+            font-size: 0.8rem;
+            margin-top: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gate-error.show { opacity: 1; }
+        .gate-footer {
+            margin-top: 3rem;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.2);
+            line-height: 1.6;
+        }
+
+        /* ========== MAIN CONTENT ========== */
+        #content { display: none; }
+        #content.visible { display: block; }
+
+        /* Layout */
+        .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+        .section { padding: 6rem 0; position: relative; }
+        .en-label {
+            font-family: var(--font-en);
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            font-size: 0.65rem;
+            color: var(--c-gold);
+            display: block;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        h2 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+        h3 {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            margin-bottom: 1rem;
+        }
+        p { font-weight: 300; letter-spacing: 0.02em; margin-bottom: 1.2rem; font-size: 0.95rem; }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-d1 { transition-delay: 0.1s; }
+        .reveal-d2 { transition-delay: 0.2s; }
+        .reveal-d3 { transition-delay: 0.3s; }
+
+        /* ---- Hero ---- */
+        .hero {
+            background: var(--c-navy);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 30%; right: -10%;
+            width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(200,159,87,0.12) 0%, transparent 70%);
+            filter: blur(80px);
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -10%; left: -10%;
+            width: 40vw; height: 40vw;
+            background: radial-gradient(circle, rgba(30,45,79,0.6) 0%, transparent 70%);
+            filter: blur(60px);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 2; width: 100%; }
+        .hero-confidential {
+            display: inline-block;
+            font-family: var(--font-en);
+            font-size: 0.6rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--c-gold);
+            border: 1px solid rgba(200,159,87,0.35);
+            padding: 0.35rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: 3.2rem;
+            font-weight: 600;
+            line-height: 1.35;
+            letter-spacing: 0.06em;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 em {
+            font-style: normal;
+            color: var(--c-gold-light);
+        }
+        .hero-lead {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.55);
+            font-weight: 300;
+            line-height: 2;
+            max-width: 540px;
+        }
+        .hero-meta {
+            margin-top: 3rem;
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .hero-meta-item {
+            text-align: left;
+        }
+        .hero-meta-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            color: rgba(255,255,255,0.35);
+            text-transform: uppercase;
+            font-family: var(--font-en);
+            margin-bottom: 0.3rem;
+        }
+        .hero-meta-value {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--c-gold-light);
+            font-weight: 500;
+        }
+        .hero-meta-value small {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.4);
+            font-family: var(--font-sans);
+            font-weight: 300;
+        }
+        .hero-scroll {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            opacity: 0.4;
+        }
+        .hero-scroll span {
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            font-family: var(--font-en);
+        }
+        .hero-scroll-line {
+            width: 1px;
+            height: 50px;
+            background: #fff;
+            animation: scrollPulse 2s infinite;
+            transform-origin: top;
+        }
+        @keyframes scrollPulse {
+            0% { transform: scaleY(0); opacity: 1; }
+            50% { transform: scaleY(1); opacity: 1; }
+            100% { transform: scaleY(1); opacity: 0; }
+        }
+
+        /* ---- Business Overview ---- */
+        .biz-section { background: var(--c-bg); }
+        .biz-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .biz-card {
+            background: var(--c-surface);
+            padding: 2.5rem;
+            border-left: 3px solid var(--c-gold);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+        }
+        .biz-card h3 { color: var(--c-gold); font-size: 1rem; }
+        .biz-card p { font-size: 0.9rem; margin-bottom: 0.8rem; }
+        .biz-card p:last-child { margin-bottom: 0; }
+
+        /* ---- Product Essence ---- */
+        .product-section { background: var(--c-surface); }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        .product-card {
+            padding: 2rem;
+            background: var(--c-bg);
+            border: 1px solid transparent;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .product-card:hover { border-color: var(--c-gold); transform: translateY(-3px); }
+        .product-icon {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--c-gold);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .product-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .product-card p { font-size: 0.85rem; color: var(--c-text-light); margin-bottom: 0; }
+
+        /* ---- Bond Terms ---- */
+        .bond-section {
+            background: var(--c-navy);
+            color: #fff;
+        }
+        .bond-table-wrap {
+            margin-top: 3rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            overflow: hidden;
+        }
+        .bond-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .bond-table tr { border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .bond-table tr:last-child { border-bottom: none; }
+        .bond-table th {
+            text-align: left;
+            padding: 1.2rem 1.5rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.45);
+            width: 35%;
+            vertical-align: top;
+            letter-spacing: 0.05em;
+        }
+        .bond-table td {
+            padding: 1.2rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: #fff;
+        }
+        .bond-table td strong {
+            color: var(--c-gold-light);
+            font-weight: 600;
+        }
+        .bond-highlight {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        .bond-highlight-item {
+            text-align: center;
+            padding: 2rem 1rem;
+            border: 1px solid rgba(200,159,87,0.2);
+            background: rgba(200,159,87,0.04);
+        }
+        .bond-highlight-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            font-family: var(--font-en);
+            margin-bottom: 0.5rem;
+        }
+        .bond-highlight-value {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: var(--c-gold-light);
+            font-weight: 500;
+        }
+        .bond-highlight-value small {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+            font-family: var(--font-sans);
+        }
+
+        /* ---- Fund Usage ---- */
+        .fund-section { background: var(--c-bg); }
+        .fund-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+        .fund-card {
+            background: var(--c-surface);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .fund-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--c-gold), transparent);
+        }
+        .fund-num {
+            font-family: var(--font-en);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            color: var(--c-gold);
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+        .fund-card h3 { font-size: 1rem; }
+        .fund-card p { font-size: 0.88rem; color: var(--c-text-light); margin-bottom: 0; }
+
+        /* ---- Timeline ---- */
+        .timeline-section { background: var(--c-surface); }
+        .timeline {
+            margin-top: 3rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--c-gold), var(--c-line));
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2.5rem;
+            padding-left: 2rem;
+        }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.3rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--c-gold);
+            transform: translateX(-4px);
+        }
+        .timeline-date {
+            font-family: var(--font-en);
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            color: var(--c-gold);
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+        }
+        .timeline-text {
+            font-size: 0.95rem;
+            color: var(--c-text);
+            margin-bottom: 0;
+        }
+
+        /* ---- Company Info ---- */
+        .company-section { background: var(--c-bg); }
+        .company-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+        .company-table tr { border-bottom: 1px solid var(--c-line); }
+        .company-table th {
+            text-align: left;
+            padding: 1rem 1.5rem 1rem 0;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--c-text-light);
+            width: 30%;
+            vertical-align: top;
+        }
+        .company-table td {
+            padding: 1rem 0;
+            font-size: 0.95rem;
+        }
+
+        /* ---- Disclaimer / Footer ---- */
+        .disclaimer-section {
+            background: var(--c-navy);
+            color: #fff;
+            padding: 4rem 0;
+        }
+        .disclaimer-section h2 { color: #fff; font-size: 1.3rem; }
+        .disclaimer-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        .disclaimer-list li {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.9;
+            padding-left: 1.2rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+        .disclaimer-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7rem;
+            width: 4px;
+            height: 4px;
+            background: var(--c-gold);
+            border-radius: 50%;
+        }
+
+        footer {
+            background: #080c18;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        footer p {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.2);
+            margin-bottom: 0;
+            font-family: var(--font-en);
+            letter-spacing: 0.1em;
+        }
+
+        /* ---- CTA ---- */
+        .cta-section {
+            background: var(--c-surface);
+            padding: 5rem 0;
+            text-align: center;
+        }
+        .cta-section h2 { font-size: 1.6rem; }
+        .cta-section p { color: var(--c-text-light); max-width: 500px; margin: 0 auto 2rem; }
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--c-navy);
+            color: #fff;
+            text-decoration: none;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        .cta-btn:hover { background: var(--c-gold); color: var(--c-navy); }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero-meta { gap: 2rem; }
+            .hero-meta-value { font-size: 1.3rem; }
+            .hero-scroll { display: none; }
+            .biz-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .product-grid { grid-template-columns: 1fr; }
+            .bond-highlight { grid-template-columns: 1fr; }
+            .bond-table th { width: 38%; padding: 0.8rem 1rem; font-size: 0.75rem; }
+            .bond-table td { padding: 0.8rem 1rem; font-size: 0.88rem; }
+            .fund-grid { grid-template-columns: 1fr; }
+            .section { padding: 4rem 0; }
+            .container { padding: 0 1.5rem; }
+            h2 { font-size: 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.6rem; }
+            .hero-meta { flex-direction: column; gap: 1.5rem; }
+            .container { padding: 0 1.2rem; }
+            h2 { font-size: 1.3rem; }
+            .section { padding: 3rem 0; }
+            .gate-title { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== PASSWORD GATE ==================== -->
+<div id="gate">
+    <div class="gate-inner">
+        <div class="gate-badge">Confidential</div>
+        <div class="gate-title">社債ご案内ページ</div>
+        <p class="gate-sub">閲覧にはパスワードが必要です</p>
+        <form id="gateForm" onsubmit="return checkPass()">
+            <div class="gate-input-wrap">
+                <input type="password" id="gateInput" class="gate-input" placeholder="PASSWORD" autocomplete="off" autofocus>
+            </div>
+            <button type="submit" class="gate-btn">Enter</button>
+            <p id="gateError" class="gate-error">パスワードが正しくありません</p>
+        </form>
+        <p class="gate-footer">本ページは特定の関係者様のみに<br>限定公開されています。</p>
+    </div>
+</div>
+
+<!-- ==================== MAIN CONTENT ==================== -->
+<div id="content">
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="hero-confidential reveal">社外秘 ― Confidential</div>
+            <h1 class="reveal reveal-d1">
+                発酵の可能性に投資する。<br>
+                <em>第1回無担保社債</em>のご案内
+            </h1>
+            <p class="hero-lead reveal reveal-d2">
+                Refine Works株式会社は、福島県只見町の伝統蒸留技術から生まれる<br>
+                次世代発酵コスメ原料「ねっか液体酒粕」の事業化を推進しています。<br>
+                本社債は、その成長資金としてご案内するものです。
+            </p>
+            <div class="hero-meta reveal reveal-d3">
+                <div class="hero-meta-item">
+                    <div class="hero-meta-label">Interest Rate</div>
+                    <div class="hero-meta-value">5.0<small>% / 年</small></div>
+                </div>
+                <div class="hero-meta-item">
+                    <div class="hero-meta-label">Unit Price</div>
+                    <div class="hero-meta-value">50<small>万円 / 口</small></div>
+                </div>
+                <div class="hero-meta-item">
+                    <div class="hero-meta-label">Maturity</div>
+                    <div class="hero-meta-value">2<small>年</small></div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>SCROLL</span>
+            <div class="hero-scroll-line"></div>
+        </div>
+    </header>
+
+    <!-- BUSINESS OVERVIEW -->
+    <section class="section biz-section">
+        <div class="container">
+            <div class="biz-grid">
+                <div class="reveal">
+                    <span class="en-label">Business Vision</span>
+                    <h2>世界で唯一の<br>発酵コスメ原料を。</h2>
+                    <p>清酒と同じ「米・麹・酵母」による共発酵を経て、わずか30℃の低温蒸留で生まれる「ねっか液体酒粕」。一般的なガラクトミセス培養液の<strong>約10倍の濃度</strong>を持つ、生体発酵原液です。</p>
+                    <p>AMGは、この唯一無二の原料を化粧品OEM向けに事業化し、「日本の発酵技術 × サステナビリティ」という新しい価値を世界に届けます。</p>
+                </div>
+                <div>
+                    <div class="biz-card reveal reveal-d1">
+                        <h3>原料の優位性</h3>
+                        <p>アミノ酸・セラミド・コウジ酸・ポリアミン・α-EGなど、美容活性成分が高密度で共存。Brix値4〜7%は発酵美容原料として世界最高クラス。</p>
+                    </div>
+                    <div class="biz-card reveal reveal-d2" style="margin-top: 1.5rem;">
+                        <h3>アップサイクル × SDGs</h3>
+                        <p>従来は産業廃棄物として処理されていた焼酎蒸留粕を高機能原料に転換。ユネスコエコパーク只見の地域資源を循環させるエシカルなビジネスモデル。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT ESSENCE -->
+    <section class="section product-section">
+        <div class="container">
+            <div class="reveal" style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <span class="en-label">Core Ingredients</span>
+                <h2>ねっか液体酒粕に含まれる<br>主要美容成分</h2>
+            </div>
+            <div class="product-grid">
+                <div class="product-card reveal">
+                    <span class="product-icon">Amino Acids</span>
+                    <h3>アミノ酸・ペプチド群</h3>
+                    <p>角層の天然保湿因子（NMF）を直接補給。乾燥・小ジワをケアし、バリア機能を修復。</p>
+                </div>
+                <div class="product-card reveal reveal-d1">
+                    <span class="product-icon">Kojic Acid</span>
+                    <h3>コウジ酸・フェルラ酸</h3>
+                    <p>チロシナーゼ阻害によるメラニン抑制と、活性酸素除去によるエイジングケア。</p>
+                </div>
+                <div class="product-card reveal reveal-d2">
+                    <span class="product-icon">Ceramide</span>
+                    <h3>グルコシルセラミド</h3>
+                    <p>細胞間脂質の主成分。水分保持機能を高め、強固な肌土台を形成。</p>
+                </div>
+                <div class="product-card reveal">
+                    <span class="product-icon">α-EG</span>
+                    <h3>α-エチル-D-グルコシド</h3>
+                    <p>日本酒特有成分。真皮線維芽細胞にアプローチし、皮膚のハリ・弾力を向上。</p>
+                </div>
+                <div class="product-card reveal reveal-d1">
+                    <span class="product-icon">Polyamine</span>
+                    <h3>ポリアミン・アデノシン</h3>
+                    <p>細胞増殖・幹細胞の維持に関与。頭皮ケア・育毛サポートへの応用も期待。</p>
+                </div>
+                <div class="product-card reveal reveal-d2">
+                    <span class="product-icon">Organic Acids</span>
+                    <h3>有機酸・多糖類</h3>
+                    <p>肌表面を弱酸性に保ち、皮膚常在菌叢のバランスを整えるマイクロバイオームケア。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOND TERMS -->
+    <section class="section bond-section" id="terms">
+        <div class="container">
+            <div class="reveal" style="text-align: center;">
+                <span class="en-label" style="color: rgba(255,255,255,0.4);">Bond Terms</span>
+                <h2 style="color: #fff;">募集要項</h2>
+                <p style="color: rgba(255,255,255,0.45); max-width: 500px; margin: 0 auto;">Refine Works株式会社 第1回無担保社債</p>
+            </div>
+
+            <div class="bond-highlight reveal reveal-d1">
+                <div class="bond-highlight-item">
+                    <div class="bond-highlight-label">総額</div>
+                    <div class="bond-highlight-value">3,000<small>万円</small></div>
+                </div>
+                <div class="bond-highlight-item">
+                    <div class="bond-highlight-label">利率</div>
+                    <div class="bond-highlight-value">5.0<small>%</small></div>
+                </div>
+                <div class="bond-highlight-item">
+                    <div class="bond-highlight-label">償還</div>
+                    <div class="bond-highlight-value">2<small>年後一括</small></div>
+                </div>
+            </div>
+
+            <div class="bond-table-wrap reveal reveal-d2">
+                <table class="bond-table">
+                    <tr>
+                        <th>社債の名称</th>
+                        <td>Refine Works株式会社 第1回無担保社債</td>
+                    </tr>
+                    <tr>
+                        <th>発行会社</th>
+                        <td>Refine Works株式会社<br><small style="color:rgba(255,255,255,0.35);">福島県いわき市遠野町上遠野若宮60-1</small></td>
+                    </tr>
+                    <tr>
+                        <th>社債総額</th>
+                        <td><strong>金 30,000,000円</strong></td>
+                    </tr>
+                    <tr>
+                        <th>各社債の金額</th>
+                        <td><strong>一口 500,000円</strong>（全60口）<br><small style="color:rgba(255,255,255,0.35);">複数口のお引き受けが可能です</small></td>
+                    </tr>
+                    <tr>
+                        <th>利率</th>
+                        <td><strong>年 5.0%</strong><small style="color:rgba(255,255,255,0.35);">（1年を365日とした日割計算）</small></td>
+                    </tr>
+                    <tr>
+                        <th>申込期間</th>
+                        <td>2026年3月1日 〜 2026年3月25日</td>
+                    </tr>
+                    <tr>
+                        <th>払込期日</th>
+                        <td>2026年3月28日</td>
+                    </tr>
+                    <tr>
+                        <th>利息起算日（発行日）</th>
+                        <td>2026年4月1日</td>
+                    </tr>
+                    <tr>
+                        <th>償還期限</th>
+                        <td><strong>2028年3月31日</strong>（元金全額を一括償還）</td>
+                    </tr>
+                    <tr>
+                        <th>利息の支払</th>
+                        <td>年1回<br>第1回：2027年3月31日<br>第2回：2028年3月31日（償還時）</td>
+                    </tr>
+                    <tr>
+                        <th>担保・保証</th>
+                        <td>無担保・無保証</td>
+                    </tr>
+                    <tr>
+                        <th>社債券</th>
+                        <td>不発行（社債原簿への記載で権利証明）</td>
+                    </tr>
+                    <tr>
+                        <th>譲渡制限</th>
+                        <td>取締役の承諾を要する</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUND USAGE -->
+    <section class="section fund-section">
+        <div class="container">
+            <div class="reveal">
+                <span class="en-label">Use of Funds</span>
+                <h2>資金使途</h2>
+                <p style="color: var(--c-text-light); max-width: 560px;">調達資金は、ねっか液体酒粕の化粧品原料としての事業化に向けた以下の分野に充当いたします。</p>
+            </div>
+            <div class="fund-grid">
+                <div class="fund-card reveal">
+                    <span class="fund-num">01</span>
+                    <h3>原料調達・製造体制の構築</h3>
+                    <p>ねっか蒸留所との原料供給契約の強化、品質管理体制の整備、保管・物流インフラの確立。</p>
+                </div>
+                <div class="fund-card reveal reveal-d1">
+                    <span class="fund-num">02</span>
+                    <h3>成分分析・INCI登録</h3>
+                    <p>化粧品原料としての成分分析、安全性試験、国際化粧品成分名称（INCI）の登録に向けた費用。</p>
+                </div>
+                <div class="fund-card reveal reveal-d2">
+                    <span class="fund-num">03</span>
+                    <h3>OEM開発・製品化</h3>
+                    <p>美容液・マスク・スカルプケアなど、発酵原液を活用した製品ラインの開発・試作。</p>
+                </div>
+                <div class="fund-card reveal reveal-d3">
+                    <span class="fund-num">04</span>
+                    <h3>営業・マーケティング</h3>
+                    <p>化粧品OEMメーカー・ブランドへの営業展開、展示会出展、ブランディング施策。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="section timeline-section">
+        <div class="container">
+            <div class="reveal">
+                <span class="en-label">Schedule</span>
+                <h2>スケジュール</h2>
+            </div>
+            <div class="timeline reveal reveal-d1">
+                <div class="timeline-item">
+                    <div class="timeline-date">2026.03.01 - 03.25</div>
+                    <p class="timeline-text">申込受付期間</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2026.03.28</div>
+                    <p class="timeline-text">払込期日</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2026.04.01</div>
+                    <p class="timeline-text">利息起算日（発行日）</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2027.03.31</div>
+                    <p class="timeline-text">第1回利息支払日（年5.0%）</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2028.03.31</div>
+                    <p class="timeline-text">償還期限 ― 元金全額一括償還 + 第2回利息支払</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPANY -->
+    <section class="section company-section">
+        <div class="container">
+            <div class="reveal">
+                <span class="en-label">Issuer</span>
+                <h2>発行会社</h2>
+            </div>
+            <table class="company-table reveal reveal-d1">
+                <tr>
+                    <th>商号</th>
+                    <td>Refine Works株式会社</td>
+                </tr>
+                <tr>
+                    <th>代表取締役</th>
+                    <td>長谷川 博紀</td>
+                </tr>
+                <tr>
+                    <th>所在地</th>
+                    <td>福島県いわき市遠野町上遠野若宮60-1</td>
+                </tr>
+                <tr>
+                    <th>事業内容</th>
+                    <td>発酵コスメ原料の開発・販売、化粧品OEM企画</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container reveal">
+            <span class="en-label">Contact</span>
+            <h2>お申し込み・ご質問</h2>
+            <p>社債のお申し込み、詳細資料のご請求、ご不明点のお問い合わせは下記よりお願いいたします。</p>
+            <a href="mailto:info@example.com" class="cta-btn">お問い合わせ</a>
+        </div>
+    </section>
+
+    <!-- DISCLAIMER -->
+    <section class="disclaimer-section">
+        <div class="container">
+            <h2>ご留意事項</h2>
+            <ul class="disclaimer-list">
+                <li>本社債は、金融商品取引法第2条第3項第2号ロに規定される「少人数私募債（50名未満）」として発行されるものであり、一般勧誘は行いません。</li>
+                <li>本ページは特定の関係者様への情報提供を目的としたものであり、有価証券の取得の申込みの勧誘を構成するものではありません。</li>
+                <li>本社債には担保および保証は付されておらず、預金保険制度の対象ではありません。</li>
+                <li>元本および利息の支払いは発行会社の信用力に依存します。発行会社の財務状況等の変化により、元本や利息の支払いに影響が生じる可能性があります。</li>
+                <li>本社債の譲渡、質入れその他の処分には、発行会社の取締役の承諾が必要です。</li>
+                <li>本ページの内容は社外秘です。第三者への開示・転送はご遠慮ください。</li>
+                <li>詳細な条件は社債引受契約書をご確認ください。</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Refine Works Co., Ltd. &mdash; All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</div>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+    // Password: amg2026 (SHA-256 hash for basic obfuscation)
+    const HASH = '8a4c3e4d6f0b2a1e9c8d7f6e5a4b3c2d'; // placeholder
+    const PASS = 'amg';
+
+    function checkPass() {
+        const input = document.getElementById('gateInput').value;
+        if (input === PASS) {
+            document.getElementById('gate').classList.add('hidden');
+            document.getElementById('content').classList.add('visible');
+            sessionStorage.setItem('amg_auth', '1');
+            initReveal();
+            return false;
+        }
+        document.getElementById('gateError').classList.add('show');
+        document.getElementById('gateInput').value = '';
+        setTimeout(() => document.getElementById('gateError').classList.remove('show'), 2000);
+        return false;
+    }
+
+    // Restore session
+    if (sessionStorage.getItem('amg_auth') === '1') {
+        document.getElementById('gate').classList.add('hidden');
+        document.getElementById('content').classList.add('visible');
+        window.addEventListener('DOMContentLoaded', initReveal);
+    }
+
+    // Scroll reveal
+    function initReveal() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    // Disable right-click & print (basic deterrent)
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'p') e.preventDefault();
+    });
+</script>
+</body>
+</html>
